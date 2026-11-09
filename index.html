@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Follow the Money — Axiology, the Hype Cycle and the Promethean Inversion in the AI Investment Loop</title>
+<meta name="author" content="Mark Downham — Principia Humanitatis">
+<meta name="description" content="Axiology, the Gartner Hype Cycle and the Promethean Inversion in the AI investment loop — a redrawn Boyd OODA diagram showing where the value leaks out, and a close account of Jevons' paradox.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://markdownham88-crypto.github.io/follow-the-money/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Principia Humanitatis">
+<meta property="og:title" content="Follow the Money — Axiology, the Hype Cycle and the Promethean Inversion in AI">
+<meta property="og:description" content="Where the value leaks out of the AI investment loop: Boyd's OODA, Hartman's axiology, Chinese open weights and Jevons' paradox.">
+<meta property="og:url" content="https://markdownham88-crypto.github.io/follow-the-money/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Follow the Money — the AI investment loop and where its value leaks">
+<meta name="twitter:description" content="Axiology, the Gartner Hype Cycle, the Promethean inversion and Jevons' paradox.">
+<meta name="theme-color" content="#1f3a5f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f6f1e6'/%3E%3Crect x='6' y='6' width='52' height='52' fill='none' stroke='%23b3261e' stroke-width='5'/%3E%3Ctext x='32' y='45' font-size='34' text-anchor='middle' fill='%23b3261e' font-family='serif'%3E%E5%8B%A2%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Follow the Money: Axiology, the Hype Cycle and the Promethean Inversion in the AI investment loop","author":{"@type":"Person","name":"Mark Downham"},"publisher":{"@type":"Organization","name":"Principia Humanitatis"},"datePublished":"2026-11-09","inLanguage":"en-GB","url":"https://markdownham88-crypto.github.io/follow-the-money/"}</script>
+<style>
+:root{
+  --paper:#f6f1e6; --paper2:#efe7d6; --ink:#1d1a16; --ink2:#4a4339; --rule:#cbbd9f;
+  --navy:#1f3a5f; --gold:#a87b1f; --seal:#b3261e; --seal-soft:#f3d9d4; --jade:#2f6b57; --mute:#7d7364;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;font-size:19px;line-height:1.68;text-rendering:optimizeLegibility}
+.wrap{max-width:860px;margin:0 auto;padding:0 28px}
+.wide{max-width:1240px;margin:0 auto;padding:0 18px}
+header.masthead{border-bottom:3px double var(--rule);padding:64px 0 40px;text-align:center;background:linear-gradient(var(--paper2),var(--paper))}
+.imprint{font-variant:small-caps;letter-spacing:.22em;color:var(--gold);font-size:.82rem}
+h1{font-weight:normal;font-size:2.6rem;line-height:1.15;margin:.4em 0 .25em;letter-spacing:-.01em}
+.subtitle{font-style:italic;color:var(--ink2);font-size:1.18rem;max-width:720px;margin:0 auto}
+.byline{margin-top:1.4em;font-variant:small-caps;letter-spacing:.12em;font-size:.86rem;color:var(--mute)}
+.seal{display:inline-block;border:2px solid var(--seal);color:var(--seal);padding:.25em .55em;font-size:1.05rem;margin-top:1.2em;letter-spacing:.3em}
+nav.toc{background:var(--paper2);border:1px solid var(--rule);padding:22px 30px;margin:44px 0;font-size:.95rem}
+nav.toc ol{margin:.4em 0 0;padding-left:1.4em}
+nav.toc a{color:var(--navy);text-decoration:none}
+nav.toc a:hover{text-decoration:underline}
+h2{font-weight:normal;font-size:1.85rem;margin:2.4em 0 .4em;border-bottom:1px solid var(--rule);padding-bottom:.2em}
+h2 .num{color:var(--seal);font-variant:small-caps;margin-right:.4em}
+h3{font-size:1.18rem;margin:1.8em 0 .4em;color:var(--navy);font-weight:bold}
+p{margin:0 0 1.05em}
+.lede::first-letter{float:left;font-size:4.1rem;line-height:.85;padding:.06em .1em 0 0;color:var(--seal)}
+.caps{font-variant:small-caps;letter-spacing:.08em;color:var(--seal);font-weight:bold}
+.aphorism{font-variant:small-caps;letter-spacing:.14em;text-align:center;color:var(--navy);font-size:1.1rem;margin:1.8em 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.8em 0}
+blockquote{margin:1.4em 0;padding:.6em 1.2em;border-left:3px solid var(--gold);background:rgba(168,123,31,.06);font-style:italic}
+.thesis{background:var(--navy);color:#f6f1e6;padding:22px 28px;margin:1.8em 0;font-size:1.08rem}
+.thesis strong{color:#f1cf7e}
+.counter{background:#fff;border:1px solid var(--rule);border-left:4px solid var(--jade);padding:16px 22px;margin:1.6em 0}
+.counter h4{margin:0 0 .4em;color:var(--jade);font-variant:small-caps;letter-spacing:.1em}
+.leakbox{background:var(--seal-soft);border-left:4px solid var(--seal);padding:14px 20px;margin:1.2em 0}
+.leakbox b{color:var(--seal)}
+figure{margin:2.2em 0;background:#fffdf8;border:1px solid var(--rule);padding:18px 18px 10px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.86rem;color:var(--ink2);border-top:1px solid var(--rule);margin-top:10px;padding-top:8px;line-height:1.5}
+figcaption b{font-variant:small-caps;letter-spacing:.08em;color:var(--seal)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:1.4em 0;background:#fffdf8}
+th,td{border:1px solid var(--rule);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper2);font-variant:small-caps;letter-spacing:.06em}
+td.hi{color:var(--seal);font-weight:bold}
+td.mid{color:var(--gold);font-weight:bold}
+td.lo{color:var(--jade);font-weight:bold}
+.math{font-family:"Cambria Math","STIX Two Math",Cambria,Georgia,serif;background:#fffdf8;border:1px solid var(--rule);padding:14px 20px;margin:1.2em 0;text-align:center;font-size:1.08rem;line-height:2}
+.math .note{display:block;font-size:.85rem;color:var(--ink2);font-family:inherit;text-align:left;line-height:1.5;margin-top:.4em}
+sup a{color:var(--seal);text-decoration:none;font-size:.75em}
+.sources{font-size:.88rem}
+.sources li{margin-bottom:.4em}
+.sources a{color:var(--navy)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:1.4em 0}
+.card{background:#fffdf8;border:1px solid var(--rule);padding:14px 18px;font-size:.93rem}
+.card h4{margin:0 0 .3em;font-variant:small-caps;letter-spacing:.08em;color:var(--navy)}
+footer{border-top:3px double var(--rule);margin-top:70px;padding:30px 0 60px;text-align:center;color:var(--mute);font-size:.85rem}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:9}
+.totop{position:fixed;right:18px;bottom:18px;width:42px;height:42px;border-radius:50%;background:var(--navy);color:#f6f1e6;text-align:center;line-height:42px;text-decoration:none;font-size:20px;opacity:.85}
+.totop:hover{opacity:1}
+@media (max-width:720px){body{font-size:17px}h1{font-size:1.9rem}.grid2{grid-template-columns:1fr}}
+@media print{body{background:#fff}nav.toc,.totop{display:none}figure{break-inside:avoid}}
+</style>
+</head>
+<body>
+<a class="skip" href="#prologue">Skip to essay</a>
+
+<header class="masthead" id="top">
+  <div class="wrap">
+    <div class="imprint">Principia Humanitatis · Essays in Complexity and Value</div>
+    <h1>Follow the Money</h1>
+    <div class="subtitle">Axiology, the Gartner Hype Cycle and the Promethean Inversion in the AI investment loop — with a redrawn version of Boyd's OODA overlay showing where the value leaks out, and a close account of Jevons' paradox</div>
+    <div class="byline">Mark Downham · London · November 2026</div>
+    <div class="seal">道 理 勢</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<nav class="toc">
+<strong>Contents</strong>
+<ol>
+  <li><a href="#prologue">Prologue: the little voice and the Monday thought</a></li>
+  <li><a href="#diagram">What the diagram is really showing</a></li>
+  <li><a href="#hype">The Hype Cycle tracks expectations, not the technology</a></li>
+  <li><a href="#axiology">Axiology: what kind of value is being priced?</a></li>
+  <li><a href="#prometheus">The Promethean inversion</a></li>
+  <li><a href="#leaks">Where the mispricing lands: the loop redrawn</a></li>
+  <li><a href="#jevons">Jevons' paradox in detail</a></li>
+  <li><a href="#credit">Hype meets credit: collateral, depreciation and the lender's view</a></li>
+  <li><a href="#counter">The counter-case, stated honestly</a></li>
+  <li><a href="#signals">Signals to watch: an OODA dashboard for the trough</a></li>
+  <li><a href="#coda">Coda: Dào, Lǐ, Shì and the synthesis in one line</a></li>
+  <li><a href="#sources">Sources and notes</a></li>
+</ol>
+</nav>
+
+<!-- ============ PROLOGUE ============ -->
+<h2 id="prologue"><span class="num">§0</span>Prologue: the little voice and the Monday thought</h2>
+
+<p class="lede">There is a little voice that keeps saying <em>follow the money</em>. It is the oldest instruction in investigation and the most neglected in a boom. When a whole economy agrees that something matters, it stops asking where the money goes once it has been spent. This essay starts from a conceptual sketch that lays John Boyd's final OODA diagram of 1995 over the AI investment cycle. The question at the foot of that sketch has become the question of 2026: <em>are we observing genuine demand, or the consequences of investing in its expectation?</em></p>
+
+<p>My approach rests on two instruments that are rarely used together. The first is <strong>axiology</strong>, the philosophy of value. It asks what <em>kind</em> of value is being priced, and for whom, before it asks how much. The second is the <strong>Gartner Hype Cycle</strong>, which maps how collective expectation runs ahead of real adoption and then corrects. The argument has four parts. The technological and competitive shifts are real. The valuations are complex. The Western Promethean impulse is technically ahead. But that impulse risks being <em>underpriced</em>, in both senses of the word, by Chinese technology that is cheaper, open and good enough.</p>
+
+<p>Boyd explains how a reflexive cycle runs. Axiology and the Hype Cycle explain why it gets mispriced. The US–China contest shows where the mispricing will land. Jevons' paradox, worked through in detail in §6, explains the strangest feature of all: collapsing prices in one part of the loop can keep the rest of it spinning.</p>
+
+<p class="aphorism">The money is real · Much of it travels in a circle · The question is where it leaks out</p>
+
+<!-- ============ DIAGRAM ============ -->
+<h2 id="diagram"><span class="num">§1</span>What the diagram is really showing</h2>
+
+<p>As drawn, the loop closes on itself. Capital funds hyperscalers. Hyperscalers buy from chipmakers and data-centre builders. Chipmakers' revenues confirm the forecasts, and the forecasts bring in more capital. Each pass through the loop produces "new information," but much of it is the cycle reporting on its own spending. In Boyd's terms this is a failure of <strong>Orientation</strong>. The observations are real, but the schema reading them treats the loop's internal transfers as outside demand.</p>
+
+<p>Boyd put Orientation at the centre of his final sketch, and that was deliberate. In <em>Destruction and Creation</em> (1976) he argued that every mental model eventually drifts away from the reality it describes. The drift shows up as rising confusion. The only remedy is to break the model apart and rebuild it from fresh pieces. Applied to markets, a valuation is an artefact of Orientation: a compressed theory of the future, expressed as a number. When the inputs to that theory are increasingly produced by the theory itself, the model gets more confident while it drifts further from reality.</p>
+
+<p>This is what George Soros called <strong>reflexivity</strong>. Participants' beliefs change the fundamentals those beliefs are supposed to describe. A rising chip order book is real. If the orders are placed because of the valuation, and the valuation rises because of the orders, then the order book is evidence about the <em>loop</em> rather than about end demand. The diagram's arrows labelled "implicit guidance and control" mark exactly where this short-circuit happens. Expectations shape action directly, without being checked against anything outside the loop.</p>
+
+<p>The numbers show the gap. XTB, drawing on Morgan Stanley, estimates hyperscaler AI spending of about $760 billion in 2026, against AI product revenues of perhaps $80–150 billion.<sup><a href="#s1">1</a></sup> Other estimates of 2026 hyperscaler capex fall between about $600 and $700 billion. The ranges differ, but the ratio of spend to revenue is the same order of magnitude in every account.<sup><a href="#s3">3</a>,<a href="#s4">4</a></sup> Futuriom's analysis finds that if the four largest hyperscalers fulfil their 2026 plans, revenues will grow by about 15.5% on average while capital spending grows by about 80%. Free cash flow is falling as a result. Oracle's capex rose from 37% of revenue in fiscal 2025 to 66% in the first half of fiscal 2026.<sup><a href="#s4">4</a></sup></p>
+
+<p>The loop is also borrowing more. Morgan Stanley estimates that AI-linked debt issuance could reach about $570 billion in 2026, roughly double the year before. AI-related financing reportedly makes up about half of all US investment-grade corporate bond issuance this year.<sup><a href="#s1">1</a></sup> That is where the "follow the money" instinct should go. The money is real, but much of it travels in a circle, and a growing share of the circle is now funded with debt rather than equity.</p>
+
+<div class="leakbox"><b>The diagnostic question.</b> For every dollar entering the top of the loop, how many cents leave it as revenue from end customers who would have paid without the loop's own spending, as opposed to revenue that is one participant's capex showing up as another's sales?</div>
+
+<!-- ============ HYPE ============ -->
+<h2 id="hype"><span class="num">§2</span>The Hype Cycle tracks expectations, not the technology</h2>
+
+<p>People often misread Gartner's curve as a judgement on whether a technology works. It actually plots the gap between two curves: the <strong>adoption S-curve</strong>, which is slow, real and cumulative, and the <strong>expectation curve</strong>, which overshoots and then corrects. "The shifts are real but the valuations are complex" describes the space between those two curves. The Technology Trigger, the Peak of Inflated Expectations, the Trough of Disillusionment, the Slope of Enlightenment and the Plateau of Productivity are stages in public belief, not in engineering.</p>
+
+<figure>
+<svg viewBox="0 0 960 470" role="img" aria-label="Hype Cycle with four AI value-chain layers at different positions">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4a4339"/></marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="470" fill="#fffdf8"/>
+  <line x1="70" y1="400" x2="920" y2="400" stroke="#4a4339" marker-end="url(#ah)"/>
+  <line x1="70" y1="400" x2="70" y2="30" stroke="#4a4339" marker-end="url(#ah)"/>
+  <text x="900" y="425" font-size="13" text-anchor="end" fill="#4a4339">time →</text>
+  <text x="30" y="215" font-size="13" fill="#4a4339" transform="rotate(-90 30 215)" text-anchor="middle">expectation / visibility</text>
+  <!-- adoption S-curve -->
+  <path d="M80,395 C330,390 420,330 520,250 S760,150 910,140" fill="none" stroke="#2f6b57" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="912" y="132" font-size="13" fill="#2f6b57" text-anchor="end">real adoption (S-curve)</text>
+  <!-- hype curve -->
+  <path d="M80,390 C150,380 190,60 250,60 C320,60 330,330 420,330 C500,330 560,230 680,215 C760,205 840,205 910,203" fill="none" stroke="#1f3a5f" stroke-width="3.5"/>
+  <text x="250" y="48" font-size="13" text-anchor="middle" fill="#1f3a5f">Peak of Inflated Expectations</text>
+  <text x="420" y="358" font-size="13" text-anchor="middle" fill="#1f3a5f">Trough of Disillusionment</text>
+  <text x="660" y="275" font-size="13" text-anchor="middle" fill="#1f3a5f">Slope of Enlightenment</text>
+  <text x="820" y="230" font-size="13" text-anchor="middle" fill="#1f3a5f">Plateau of Productivity</text>
+  <text x="110" y="385" font-size="12" fill="#1f3a5f">Trigger</text>
+  <!-- gap shading at peak -->
+  <line x1="250" y1="66" x2="250" y2="368" stroke="#b3261e" stroke-dasharray="3 3"/>
+  <text x="335" y="160" font-size="12" fill="#b3261e">← the valuation gap:</text>
+  <text x="347" y="175" font-size="12" fill="#b3261e">expectation − adoption</text>
+  <!-- layers -->
+  <circle cx="232" cy="66" r="11" fill="#a87b1f"/><text x="232" y="70" font-size="11" text-anchor="middle" fill="#fff" font-weight="bold">C</text>
+  <circle cx="290" cy="115" r="11" fill="#1f3a5f"/><text x="290" y="119" font-size="11" text-anchor="middle" fill="#fff" font-weight="bold">H</text>
+  <circle cx="345" cy="255" r="11" fill="#b3261e"/><text x="345" y="259" font-size="11" text-anchor="middle" fill="#fff" font-weight="bold">M</text>
+  <circle cx="420" cy="330" r="11" fill="#7d7364"/><text x="420" y="334" font-size="11" text-anchor="middle" fill="#fff" font-weight="bold">A</text>
+  <circle cx="545" cy="262" r="11" fill="#2f6b57"/><text x="545" y="266" font-size="11" text-anchor="middle" fill="#fff" font-weight="bold">G</text>
+  <!-- legend -->
+  <g font-size="12.5" fill="#1d1a16">
+    <rect x="610" y="300" width="300" height="92" fill="#f6f1e6" stroke="#cbbd9f"/>
+    <circle cx="625" cy="316" r="6" fill="#a87b1f"/><text x="637" y="320">C — chips: held at the peak by the loop</text>
+    <circle cx="625" cy="334" r="6" fill="#1f3a5f"/><text x="637" y="338">H — hyperscale infrastructure: cresting</text>
+    <circle cx="625" cy="352" r="6" fill="#b3261e"/><text x="637" y="356">M — frontier model labs: sliding</text>
+    <circle cx="625" cy="370" r="6" fill="#7d7364"/><text x="637" y="374">A — enterprise "copilot" apps: in trough</text>
+    <circle cx="625" cy="388" r="6" fill="#2f6b57"/><text x="637" y="390">G — grid, power, land: climbing</text>
+  </g>
+</svg>
+<figcaption><b>Figure 1.</b> One technology, several hype cycles. The layers of the AI value chain sit at different points on Gartner's curve. Their positions here are interpretive, not measured. The dashed green line is real adoption. The vertical red line is the gap that valuations capitalise at the peak.</figcaption>
+</figure>
+
+<p>Two points deepen this.</p>
+
+<h3>2.1 There are several hype cycles, one for each layer, and they are out of phase</h3>
+
+<p>Chips, hyperscale infrastructure, frontier model labs and applications each sit at a different point on the curve. The diagram's loop is how the chip and infrastructure layers stay at the peak while the model layer may already be heading into the trough. As long as hyperscalers keep ordering, chip revenue reflects the <em>plans</em> of the layers above it, not their <em>results</em>. A layer's position on the curve depends on whose expectations pay its bills. Chipmakers are paid from hyperscalers' expectations. Hyperscalers are paid partly from their own cloud franchises and partly from model labs' expectations. Model labs are paid from enterprise customers' results. Results arrive last, so the bottom of the stack is the first to face the trough.</p>
+
+<p>As far as I know, Gartner's own 2025 Hype Cycle already placed generative AI past the peak and heading into the trough. Meanwhile capex forecasts kept rising. That divergence is the clearest sign that the layers have separated: the analyst consensus on the <em>application</em> layer had turned while the <em>infrastructure</em> layer was still being priced at the peak.</p>
+
+<p>This is why Michael Burry's reported short on the iShares Semiconductor ETF matters as a signal regardless of whether it pays off. His argument is about a mismatch between layers: chip valuations, at a price-to-earnings ratio of about 74, have run far ahead of the big-tech customers that fund them, against roughly 32 for the Nasdaq-100.<sup><a href="#s2">2</a></sup> When the supplier is valued more richly than its customers, the market is pricing the customers' spending rather than their profits.</p>
+
+<h3>2.2 A trough is a transfer of value, not a destruction of it</h3>
+
+<p>The 2000 telecom bust is the obvious precedent. The fibre was real and became the backbone of the next twenty years, but the equity and debt holders who paid for it were largely wiped out. A technology can win while its financiers lose. Railways in the 1840s, electrification in the 1920s and fibre in the 1990s all followed this pattern. The infrastructure was overbuilt on borrowed belief, then bought out of bankruptcy for a fraction of its cost, and the cheap capacity became the foundation of the next era's profits. Those profits went to people who had not paid for the build.</p>
+
+<p>That raises the question the Hype Cycle can't answer alone: <em>value to whom, and of what kind?</em> The curve tells us that expectations will correct. It doesn't tell us where the value goes when they do. That question is axiology.</p>
+
+<p class="aphorism">The trough does not destroy value · It changes who owns it</p>
+
+<!-- ============ AXIOLOGY ============ -->
+<h2 id="axiology"><span class="num">§3</span>Axiology: what kind of value is being priced?</h2>
+
+<p>Robert S. Hartman's formal axiology works well here. Hartman defined value as the degree to which a thing fulfils its concept. He distinguished three dimensions, ranked by how rich they are and how hard they are to replace:</p>
+
+<ul>
+  <li><strong>Systemic value</strong> belongs to models, ideals and conceptual schemes: things that either meet a definition or don't. Here that is the AGI narrative, the "intelligence frontier," the benchmark score and the promise of the future platform.</li>
+  <li><strong>Extrinsic value</strong> belongs to use and exchange: things that are better or worse examples of a class and can be compared and substituted. Here that is tokens, API calls, seats and workflow substitution.</li>
+  <li><strong>Intrinsic value</strong> belongs to what is unique and irreplaceable, valued for itself and in its particular context. Here that means trust, institutional embedding, proprietary data, distribution, and regulatory or security standing.</li>
+</ul>
+
+<figure>
+<svg viewBox="0 0 960 400" role="img" aria-label="Hartman's three dimensions of value applied to AI valuation">
+  <rect width="960" height="400" fill="#fffdf8"/>
+  <g font-family="Georgia, serif">
+    <rect x="40" y="40" width="270" height="300" fill="#e7ecf3" stroke="#1f3a5f"/>
+    <text x="175" y="72" text-anchor="middle" font-size="19" fill="#1f3a5f" font-weight="bold">SYSTEMIC</text>
+    <text x="175" y="94" text-anchor="middle" font-size="13" fill="#4a4339" font-style="italic">the model, the ideal, the narrative</text>
+    <text x="60" y="130" font-size="13.5" fill="#1d1a16">• the AGI eschatology</text>
+    <text x="60" y="154" font-size="13.5" fill="#1d1a16">• the benchmark frontier</text>
+    <text x="60" y="178" font-size="13.5" fill="#1d1a16">• "the platform of platforms"</text>
+    <text x="60" y="226" font-size="13" fill="#1f3a5f">Priced by: narrative multiples</text>
+    <text x="60" y="250" font-size="13" fill="#1f3a5f">Vulnerable to: a cheaper proof</text>
+    <text x="60" y="274" font-size="13" fill="#1f3a5f">that the ideal can be met</text>
+
+    <rect x="345" y="40" width="270" height="300" fill="#f3d9d4" stroke="#b3261e"/>
+    <text x="480" y="72" text-anchor="middle" font-size="19" fill="#b3261e" font-weight="bold">EXTRINSIC</text>
+    <text x="480" y="94" text-anchor="middle" font-size="13" fill="#4a4339" font-style="italic">use, exchange, substitution</text>
+    <text x="365" y="130" font-size="13.5" fill="#1d1a16">• tokens and API calls</text>
+    <text x="365" y="154" font-size="13.5" fill="#1d1a16">• seats and subscriptions</text>
+    <text x="365" y="178" font-size="13.5" fill="#1d1a16">• tasks substituted for labour</text>
+    <text x="365" y="226" font-size="13" fill="#b3261e">Priced by: the cheapest</text>
+    <text x="365" y="250" font-size="13" fill="#b3261e">adequate substitute</text>
+    <text x="365" y="274" font-size="13" fill="#b3261e" font-weight="bold">← THE COMMODITY FRONT</text>
+
+    <rect x="650" y="40" width="270" height="300" fill="#e2efe9" stroke="#2f6b57"/>
+    <text x="785" y="72" text-anchor="middle" font-size="19" fill="#2f6b57" font-weight="bold">INTRINSIC</text>
+    <text x="785" y="94" text-anchor="middle" font-size="13" fill="#4a4339" font-style="italic">unique, embedded, irreplaceable</text>
+    <text x="670" y="130" font-size="13.5" fill="#1d1a16">• trust and accountability</text>
+    <text x="670" y="154" font-size="13.5" fill="#1d1a16">• proprietary data and context</text>
+    <text x="670" y="178" font-size="13.5" fill="#1d1a16">• distribution and embedding</text>
+    <text x="670" y="202" font-size="13.5" fill="#1d1a16">• security and regulatory standing</text>
+    <text x="670" y="250" font-size="13" fill="#2f6b57">Priced by: switching cost</text>
+    <text x="670" y="274" font-size="13" fill="#2f6b57">Resists substitution</text>
+  </g>
+  <path d="M175,345 C175,380 480,385 480,345" fill="none" stroke="#b3261e" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="330" y="392" text-anchor="middle" font-size="12.5" fill="#b3261e">valuations convert systemic belief into assumed extrinsic cash flow…</text>
+  <path d="M480,345 C480,372 785,372 785,345" fill="none" stroke="#2f6b57" stroke-width="2" stroke-dasharray="2 4"/>
+  <text x="700" y="374" text-anchor="middle" font-size="12.5" fill="#2f6b57">…but only intrinsic value holds a price</text>
+</svg>
+<figcaption><b>Figure 2.</b> Hartman's three dimensions of value applied to AI. Western valuations mostly capitalise systemic value and assume it turns into extrinsic revenue. Competition from open weights works on the extrinsic dimension. Only the intrinsic dimension resists substitution.</figcaption>
+</figure>
+
+<p>Current Western valuations are mostly capitalised <em>systemic</em> value, a price on an eschatology, which is then converted into an assumed stream of <em>extrinsic</em> revenue. The danger is that extrinsic value is exactly what competition commoditises. Only intrinsic value resists substitution.</p>
+
+<p>The categories are not interchangeable, and that is the axiological error in a bubble. Systemic value is binary: a model either meets the concept of "frontier-capable" or it doesn't. Once a cheaper model also meets the concept, the systemic premium does not shrink gradually. It disappears, because the thing it priced, being the <em>only</em> instance of the concept, no longer exists. Extrinsic value is comparative: it ranks the instances of a class and is set at the margin by the cheapest adequate one. Intrinsic value is singular: it attaches to <em>this</em> relationship, <em>this</em> dataset, <em>this</em> embedded workflow, and there is no market price that tells you what replacing it would cost.</p>
+
+<p>So the real question about a frontier lab's valuation is not whether its model is better. It is what share of the valuation rests on intrinsic value that would survive if a model 90% as good became free. For many firms the honest answer is a small one.</p>
+
+<h3>3.1 The valuer's translation: worth versus market value</h3>
+
+<p>Red Book terms make the same point. Much hyperscaler capex reflects <strong>worth to a special purchaser</strong>, or investment value, rather than <strong>market value</strong>. Each firm pays a strategic premium because it can't afford to be absent. Market value assumes a willing buyer and a willing seller acting at arm's length, knowledgeably, prudently and without compulsion. Hyperscaler capex fails that test on one condition in particular: <em>compulsion</em>. One analyst described the dynamic as almost Darwinian. Any hyperscaler that pulls back risks being unable to buy capacity again quickly if AI demand proves real.<sup><a href="#s3">3</a></sup></p>
+
+<p>Defensive worth set by fear of exclusion is a weak basis for the market value of the resulting assets. A data centre built by a special purchaser for its own strategic reasons is worth what that purchaser needs. If it is ever sold, it is worth what a buyer with no special need would pay. The gap between those two figures is the special-purchaser premium, and when the cycle turns it becomes an impairment. There are already early signs. Meta's move to sell excess compute reportedly sent the neocloud providers CoreWeave and Nebius sharply lower.<sup><a href="#s2">2</a></sup> When the most committed buyer starts selling, the market learns what the capacity is worth without the special purchaser.</p>
+
+<div class="thesis">Axiological thesis: <strong>the AI loop prices systemic value as though it were intrinsic, and books extrinsic revenue that open competition will reprice.</strong> The hype cycle's correction is the moment the market learns which dimension it was really paying for.</div>
+
+<!-- ============ PROMETHEUS ============ -->
+<h2 id="prometheus"><span class="num">§4</span>The Promethean inversion</h2>
+
+<p>This is where the China argument becomes more than a competitive footnote.</p>
+
+<p>The Western AI project really is Promethean: capital-intensive, aimed at the frontier, driven by a sense of destiny, and actually ahead. Second Talent's summary of the evidence puts the average lag of Chinese models behind the US frontier at about seven months since 2023, citing Epoch AI. It reports that CAISI estimated about eight months for DeepSeek V4 Pro in May 2026, and that the gap on the Artificial Analysis index is about 16% of the top US score.<sup><a href="#s6">6</a></sup> The lead is real. The question is what it is worth.</p>
+
+<p>The myth has a twist, though. Prometheus <em>gave fire away</em>. In Hesiod and Aeschylus, his offence was not inventing fire. It was handing to mortals something Zeus wanted kept on Olympus. Today the Western frontier labs mostly guard the fire behind closed weights and premium APIs, which makes them more like Zeus. The literal Promethean act of handing fire to everyone is being carried out by the Chinese open-weight labs.</p>
+
+<figure>
+<svg viewBox="0 0 960 360" role="img" aria-label="Promethean inversion: Western closed frontier versus Chinese open weights">
+  <rect width="960" height="360" fill="#fffdf8"/>
+  <rect x="30" y="30" width="420" height="300" fill="#e7ecf3" stroke="#1f3a5f"/>
+  <text x="240" y="64" text-anchor="middle" font-size="20" fill="#1f3a5f" font-weight="bold">THE WESTERN FRONTIER</text>
+  <text x="240" y="88" text-anchor="middle" font-size="14" fill="#4a4339" font-style="italic">Promethean in ambition, Olympian in posture</text>
+  <g font-size="14" fill="#1d1a16">
+    <text x="55" y="126">• closed weights, premium APIs</text>
+    <text x="55" y="152">• capability lead of roughly 7–8 months</text>
+    <text x="55" y="178">• capital-intensive; value sought as model rent</text>
+    <text x="55" y="204">• narrative: AGI, the platform, the moat</text>
+    <text x="55" y="230">• axiology: value is captured at the frontier</text>
+  </g>
+  <text x="240" y="290" text-anchor="middle" font-size="16" fill="#1f3a5f" font-weight="bold">KEEPS THE FIRE</text>
+
+  <rect x="510" y="30" width="420" height="300" fill="#f3d9d4" stroke="#b3261e"/>
+  <text x="720" y="64" text-anchor="middle" font-size="20" fill="#b3261e" font-weight="bold">THE CHINESE OPEN-WEIGHT LABS</text>
+  <text x="720" y="88" text-anchor="middle" font-size="14" fill="#4a4339" font-style="italic">Epimethean in posture, Promethean in effect</text>
+  <g font-size="14" fill="#1d1a16">
+    <text x="535" y="126">• open weights (MIT / Apache 2.0 licences)</text>
+    <text x="535" y="152">• 60–90% cheaper for comparable work</text>
+    <text x="535" y="178">• release tempo: four frontier-class in 7 weeks</text>
+    <text x="535" y="204">• narrative: diffusion, application, "AI+"</text>
+    <text x="535" y="230">• axiology: value is captured downstream</text>
+  </g>
+  <text x="720" y="290" text-anchor="middle" font-size="16" fill="#b3261e" font-weight="bold">GIVES THE FIRE AWAY</text>
+  <path d="M455,180 L505,180" stroke="#a87b1f" stroke-width="3" marker-end="url(#ah)"/>
+  <path d="M505,200 L455,200" stroke="#a87b1f" stroke-width="3" marker-end="url(#ah)"/>
+  <text x="480" y="232" text-anchor="middle" font-size="11" fill="#a87b1f">price</text>
+  <text x="480" y="245" text-anchor="middle" font-size="11" fill="#a87b1f">reset</text>
+</svg>
+<figcaption><b>Figure 3.</b> The Promethean inversion. The side with the more advanced fire guards it. The side a little behind gives it away, and in doing so sets the price everyone else can charge.</figcaption>
+</figure>
+
+<p>The adoption figures show how far this has gone:</p>
+
+<ul>
+  <li>Second Talent reports that Chinese models carried about 61% of OpenRouter tokens by mid-2026, up from about 1% in late 2024. It also reports that four frontier-class open models shipped within seven weeks in spring 2026, and that Chinese models are 60–90% cheaper than closed frontier models for comparable work.<sup><a href="#s5">5</a></sup></li>
+  <li>The same source cites Vercel: in June 2026, open-weight models took 29% of its gateway tokens for just under 4% of spend. That is roughly a third of the work for about a twenty-fifth of the bill.<sup><a href="#s5">5</a></sup></li>
+  <li>The benchmarking firm Artificial Analysis has described a DeepSeek "death zone." To compete, a model now has to beat DeepSeek and its Chinese peers on price or clearly outperform them on capability.<sup><a href="#s7">7</a></sup></li>
+  <li>A RAND study, as reported, found that Chinese models run at roughly one-sixth to one-quarter of the cost of comparable US systems.<sup><a href="#s9">9</a></sup></li>
+  <li>One industry analysis reports that 19 of the 25 most-downloaded open-source AI systems on Hugging Face in mid-2026 came from Chinese organisations.<sup><a href="#s8">8</a></sup> Hugging Face's summer 2026 report counts more than 150,000 models on its Hub derived from Qwen, about 2.6 times the number derived from Meta's models.<sup><a href="#s6">6</a></sup></li>
+  <li>Amazon Web Services added DeepSeek V3.2, Kimi K2.5 and Qwen3-Coder-Next to Bedrock in February 2026, presenting them as frontier-class open models with much lower inference costs.<sup><a href="#s10">10</a></sup></li>
+</ul>
+
+<p>So "underpriced" works in two senses. Chinese labs <em>price under</em> the West, and in doing so they reset what the market will pay for the Western lead. A frontier advantage of about seven months is worth a lot only if customers pay for the last 16% of capability. For most extrinsic, high-volume work they won't. Box's chief executive Aaron Levie has publicly warned that open-weight models like Qwen could trigger a broader collapse in AI pricing, since closed providers cannot justify a premium indefinitely as the gap narrows.<sup><a href="#s11">11</a></sup></p>
+
+<h3>4.1 The deeper difference is axiological, not technical</h3>
+
+<p>The axiological difference runs deeper than price. China is following an orientation it has used before: accept thin or negative returns at the commodity layer and capture value downstream, in industrial use, manufacturing, national capability and diffusion through the Global South. Solar PV and EVs are the precedents. The West invented the technology, China commoditised it, Western makers went bust, and deployment took off. The technology was real and the Western valuations weren't.</p>
+
+<p>Chinese economic commentary has a word for the internal side of this: <em>nèijuǎn</em> (内卷), "involution." It describes ruinous price competition among domestic firms that drives margins towards zero. Seen from inside China it is a problem. Seen from outside, it exports deflation into every market those firms enter. The AI model layer now shows the same pattern. Several Chinese labs have cut token prices sharply through 2026, and some recent DeepSeek models are reported to be priced more than a hundred times below Anthropic's flagship Claude model.<sup><a href="#s12">12</a></sup> This is not irrational. If capability gaps keep narrowing anyway, the fight moves to who can serve "good enough" most widely, and the gains are counted in ecosystem share, industrial productivity and strategic independence, not in the model company's equity.</p>
+
+<p>This is Boyd's "genetic heritage" and "cultural traditions" box in practice, where two civilisations orient differently to the same observations. The West sees a frontier model and asks what rent it can earn. China sees one and asks how widely it can spread and what can be built on it. Both look at the same benchmark tables and reach opposite conclusions about where value sits.</p>
+
+<h3>4.2 Tempo: operating inside the Western valuation loop</h3>
+
+<p>It is also tempo in Boyd's sense. Boyd held that the side which cycles through observation, orientation, decision and action faster, and can disrupt its opponent's orientation, wins. The aim is to get <em>inside the opponent's loop</em>, so that each of their decisions answers a situation that no longer exists.</p>
+
+<p>The Chinese release cadence works inside the Western valuation loop. Each release is new information that the orientation pricing in the Western loop can't absorb. DeepSeek in January 2025 was the first demonstration. One model release, presented as having been trained at a fraction of Western costs, was followed by one of the largest single-day losses of market value in history at Nvidia. As far as I recall that was close to $600 billion. The technology did not change that day. Orientation did. Since then, releases have arrived at a pace that means Western price lists are often out of date before the quarter they were set for has ended.</p>
+
+<p class="aphorism">Prometheus is ahead · Prometheus is guarding the fire · The fire is being given away</p>
+
+<!-- ============ LEAKS ============ -->
+<h2 id="leaks"><span class="num">§5</span>Where the mispricing lands: the loop redrawn</h2>
+
+<p>This is the part that makes the argument rigorous rather than just bearish. The risk isn't spread evenly around the diagram. Figure 4 redraws the original sketch, Boyd's OODA band above and the AI investment cycle below, and marks in seal-red the points where value <em>leaks out</em> of the loop rather than circulating within it.</p>
+
+<figure>
+<svg viewBox="0 0 1200 1010" role="img" aria-label="Redrawn AI investment cycle inside Boyd's OODA loop with eight value leaks marked">
+  <defs>
+    <marker id="a1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1f3a5f"/></marker>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#b3261e"/></marker>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#a87b1f"/></marker>
+  </defs>
+  <rect width="1200" height="1010" fill="#fffdf8"/>
+  <text x="600" y="34" text-anchor="middle" font-size="24" fill="#1d1a16">The AI Investment Cycle Inside Boyd's OODA Loop — <tspan fill="#b3261e">Where the Value Leaks</tspan></text>
+
+  <!-- OODA band -->
+  <g font-size="15" font-weight="bold" fill="#fff">
+    <rect x="20" y="52" width="230" height="30" fill="#1f3a5f"/><text x="135" y="73" text-anchor="middle">OBSERVE</text>
+    <rect x="255" y="52" width="560" height="30" fill="#1f3a5f"/><text x="535" y="73" text-anchor="middle">ORIENT</text>
+    <rect x="820" y="52" width="175" height="30" fill="#1f3a5f"/><text x="907" y="73" text-anchor="middle">DECIDE</text>
+    <rect x="1000" y="52" width="180" height="30" fill="#1f3a5f"/><text x="1090" y="73" text-anchor="middle">ACT</text>
+  </g>
+  <g font-size="12" fill="#1d1a16">
+    <rect x="25" y="100" width="120" height="44" fill="#fff" stroke="#1f3a5f"/><text x="85" y="118" text-anchor="middle">Outside</text><text x="85" y="134" text-anchor="middle">information</text>
+    <rect x="25" y="154" width="120" height="44" fill="#fff" stroke="#1f3a5f"/><text x="85" y="172" text-anchor="middle">Unfolding</text><text x="85" y="188" text-anchor="middle">circumstances</text>
+    <rect x="25" y="208" width="120" height="44" fill="#fff" stroke="#1f3a5f"/><text x="85" y="226" text-anchor="middle">Unfolding</text><text x="85" y="242" text-anchor="middle">interaction</text>
+    <ellipse cx="205" cy="176" rx="50" ry="30" fill="#fff" stroke="#1f3a5f"/><text x="205" y="180" text-anchor="middle">Observations</text>
+  </g>
+  <path d="M145,122 L158,165" stroke="#1f3a5f" marker-end="url(#a1)"/>
+  <path d="M145,176 L155,176" stroke="#1f3a5f" marker-end="url(#a1)"/>
+  <path d="M145,230 L158,190" stroke="#1f3a5f" marker-end="url(#a1)"/>
+  <path d="M255,176 L300,176" stroke="#1f3a5f" stroke-width="1.5" marker-end="url(#a1)"/>
+  <text x="277" y="166" text-anchor="middle" font-size="10" fill="#1f3a5f">feed fwd</text>
+
+  <ellipse cx="535" cy="180" rx="230" ry="98" fill="#f6f1e6" stroke="#1f3a5f" stroke-width="2"/>
+  <g font-size="11.5" fill="#1d1a16" text-anchor="middle">
+    <ellipse cx="535" cy="122" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="535" y="120">Cultural traditions</text><text x="535" y="133" font-size="9.5" fill="#4a4339">Promethean vs diffusionist</text>
+    <ellipse cx="400" cy="160" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="400" y="158">Genetic heritage</text><text x="400" y="171" font-size="9.5" fill="#4a4339">moat / rent axiology</text>
+    <ellipse cx="670" cy="160" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="670" y="158">Previous experience</text><text x="670" y="171" font-size="9.5" fill="#4a4339">cloud, telecom, solar</text>
+    <ellipse cx="440" cy="230" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="440" y="228">New information</text><text x="440" y="241" font-size="9.5" fill="#4a4339">loop's own spend (!)</text>
+    <ellipse cx="630" cy="230" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="630" y="228">Analysis &amp; synthesis</text><text x="630" y="241" font-size="9.5" fill="#4a4339">valuation models</text>
+  </g>
+  <!-- L8 orientation -->
+  <circle cx="535" cy="182" r="17" fill="#b3261e"/><text x="535" y="188" text-anchor="middle" font-size="14" fill="#fff" font-weight="bold">L8</text>
+
+  <path d="M765,180 L840,180" stroke="#1f3a5f" stroke-width="1.5" marker-end="url(#a1)"/>
+  <rect x="842" y="150" width="130" height="60" rx="30" fill="#fff" stroke="#1f3a5f"/>
+  <text x="907" y="176" text-anchor="middle" font-size="13">Decision</text><text x="907" y="194" text-anchor="middle" font-size="11" fill="#4a4339">(hypothesis)</text>
+  <path d="M972,180 L1020,180" stroke="#1f3a5f" stroke-width="1.5" marker-end="url(#a1)"/>
+  <rect x="1022" y="150" width="140" height="60" fill="#fff" stroke="#1f3a5f"/>
+  <text x="1092" y="176" text-anchor="middle" font-size="13">Action</text><text x="1092" y="194" text-anchor="middle" font-size="11" fill="#4a4339">(test = capex)</text>
+  <!-- feedback -->
+  <path d="M1092,210 L1092,300 L205,300 L205,208" fill="none" stroke="#1f3a5f" stroke-dasharray="6 4" marker-end="url(#a1)"/>
+  <text x="650" y="294" text-anchor="middle" font-size="12" fill="#1f3a5f">feedback — but much of what returns is the loop's own spending, re-observed as "demand"</text>
+  <path d="M535,82 L535,82" />
+  <text x="985" y="112" text-anchor="middle" font-size="11" fill="#a87b1f">implicit guidance &amp; control:</text><text x="985" y="127" text-anchor="middle" font-size="11" fill="#a87b1f">expectation → action (reflexivity)</text>
+
+  <!-- connectors from OODA to cycle -->
+  <path d="M1092,300 L1092,330 L800,430" fill="none" stroke="#1f3a5f" stroke-dasharray="3 4" marker-end="url(#a1)"/>
+  <path d="M600,400 L600,330 L205,330 L205,302" fill="none" stroke="#1f3a5f" stroke-dasharray="3 4"/>
+
+  <!-- CYCLE -->
+  <circle cx="600" cy="640" r="215" fill="none" stroke="#cbbd9f" stroke-width="22" opacity=".45"/>
+  <text x="600" y="628" text-anchor="middle" font-size="24" fill="#1f3a5f">The AI</text>
+  <text x="600" y="656" text-anchor="middle" font-size="24" fill="#1f3a5f">Investment Cycle</text>
+  <text x="600" y="680" text-anchor="middle" font-size="12" fill="#4a4339" font-style="italic">circulating value</text>
+
+  <!-- nodes -->
+  <g font-size="13" text-anchor="middle" fill="#1d1a16">
+    <rect x="510" y="398" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+    <text x="600" y="422" font-weight="bold">Investors &amp;</text><text x="600" y="438" font-weight="bold">Capital Markets</text><text x="600" y="453" font-size="10.5" fill="#4a4339">equity · debt · private credit</text>
+
+    <rect x="695" y="500" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+    <text x="785" y="524" font-weight="bold">Hyperscalers /</text><text x="785" y="540" font-weight="bold">Big Tech</text><text x="785" y="555" font-size="10.5" fill="#4a4339">capex ≈ $600–760bn (2026)</text>
+
+    <rect x="695" y="716" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+    <text x="785" y="740" font-weight="bold">AI Developers</text><text x="785" y="756" font-weight="bold">&amp; Platforms</text><text x="785" y="771" font-size="10.5" fill="#4a4339">frontier model labs</text>
+
+    <rect x="510" y="818" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+    <text x="600" y="842" font-weight="bold">Chipmakers &amp;</text><text x="600" y="858" font-weight="bold">Data Centres</text><text x="600" y="873" font-size="10.5" fill="#4a4339">GPUs · networking · power</text>
+
+    <rect x="325" y="716" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+    <text x="415" y="740" font-weight="bold">Revenues, Growth</text><text x="415" y="756" font-weight="bold">Expectations</text><text x="415" y="771" font-size="10.5" fill="#4a4339">forecasts · valuations</text>
+
+    <rect x="325" y="500" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+    <text x="415" y="524" font-weight="bold">Customer Demand</text><text x="415" y="540" font-weight="bold">&amp; Commitments</text><text x="415" y="555" font-size="10.5" fill="#4a4339">AI revenue ≈ $80–150bn</text>
+  </g>
+  <!-- cycle arrows clockwise -->
+  <g stroke="#1f3a5f" stroke-width="2.2" fill="none" marker-end="url(#a1)">
+    <path d="M690,440 Q750,455 770,496"/>
+    <path d="M785,562 L785,712"/>
+    <path d="M770,778 Q750,825 694,845"/>
+    <path d="M510,845 Q450,825 430,782"/>
+    <path d="M415,716 L415,566"/>
+    <path d="M430,500 Q450,455 506,440"/>
+  </g>
+
+  <!-- LEAKS -->
+  <g font-size="14" fill="#fff" font-weight="bold" text-anchor="middle">
+    <circle cx="640" cy="390" r="15" fill="#b3261e"/><text x="640" y="395">L4</text>
+    <circle cx="890" cy="530" r="15" fill="#b3261e"/><text x="890" y="535">L6</text>
+    <circle cx="890" cy="747" r="15" fill="#b3261e"/><text x="890" y="752">L2</text>
+    <circle cx="700" cy="895" r="15" fill="#b3261e"/><text x="700" y="900">L7</text>
+    <circle cx="500" cy="895" r="15" fill="#b3261e"/><text x="500" y="900">L3</text>
+    <circle cx="310" cy="747" r="15" fill="#b3261e"/><text x="310" y="752">L1</text>
+    <circle cx="310" cy="530" r="15" fill="#b3261e"/><text x="310" y="535">L5</text>
+  </g>
+  <!-- drips to sinks -->
+  <g stroke="#b3261e" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ar)">
+    <path d="M655,385 Q800,370 925,380"/>
+    <path d="M905,530 L925,530"/>
+    <path d="M905,747 L925,722"/>
+    <path d="M715,900 Q820,930 925,915"/>
+    <path d="M485,900 Q380,930 282,915"/>
+    <path d="M295,747 L282,722"/>
+    <path d="M295,530 L282,530"/>
+  </g>
+  <!-- sinks right -->
+  <g font-size="11.5" fill="#1d1a16">
+    <rect x="928" y="350" width="260" height="66" fill="#f3d9d4" stroke="#b3261e"/>
+    <text x="938" y="368" font-weight="bold" fill="#b3261e">L4 · Debt service &amp; credit risk</text>
+    <text x="938" y="384">~$570bn AI-linked issuance (2026);</text>
+    <text x="938" y="399">~half of US IG bond issuance</text>
+
+    <rect x="928" y="496" width="260" height="70" fill="#f3d9d4" stroke="#b3261e"/>
+    <text x="938" y="514" font-weight="bold" fill="#b3261e">L6 · Special-purchaser premium</text>
+    <text x="938" y="530">capex at <tspan font-style="italic">worth</tspan>, not market value;</text>
+    <text x="938" y="545">becomes impairment on resale</text>
+    <text x="938" y="560">(cf. Meta selling excess compute)</text>
+
+    <rect x="928" y="682" width="260" height="80" fill="#f3d9d4" stroke="#b3261e"/>
+    <text x="938" y="700" font-weight="bold" fill="#b3261e">L2 · Model-layer margin → open weights</text>
+    <text x="938" y="716">the DeepSeek "death zone";</text>
+    <text x="938" y="731">60–90% cheaper; ~61% OpenRouter</text>
+    <text x="938" y="746">tokens; 29% of Vercel tokens</text>
+    <text x="938" y="757">on &lt;4% of spend</text>
+
+    <rect x="928" y="878" width="260" height="76" fill="#fbf0d6" stroke="#a87b1f"/>
+    <text x="938" y="896" font-weight="bold" fill="#a87b1f">L7 · Jevons migration</text>
+    <text x="938" y="912">cheaper tokens → more compute →</text>
+    <text x="938" y="927">value moves to the scarce input:</text>
+    <text x="938" y="942">power, grid connection, land</text>
+  </g>
+  <!-- sinks left -->
+  <g font-size="11.5" fill="#1d1a16">
+    <rect x="12" y="496" width="268" height="70" fill="#e2efe9" stroke="#2f6b57"/>
+    <text x="22" y="514" font-weight="bold" fill="#2f6b57">L5 · Consumer surplus</text>
+    <text x="22" y="530">users keep the gains of cheap</text>
+    <text x="22" y="545">intelligence (telecom/fibre precedent)</text>
+    <text x="22" y="560">— value created, not captured</text>
+
+    <rect x="12" y="682" width="268" height="76" fill="#f3d9d4" stroke="#b3261e"/>
+    <text x="22" y="700" font-weight="bold" fill="#b3261e">L1 · Phantom demand (circularity)</text>
+    <text x="22" y="716">one firm's capex booked as another's</text>
+    <text x="22" y="731">revenue, re-observed as "demand";</text>
+    <text x="22" y="746">capex +80% vs revenue +15.5%</text>
+
+    <rect x="12" y="878" width="268" height="76" fill="#f3d9d4" stroke="#b3261e"/>
+    <text x="22" y="896" font-weight="bold" fill="#b3261e">L3 · Depreciation &amp; obsolescence</text>
+    <text x="22" y="912">~$115–140bn/yr at 5-year lives;</text>
+    <text x="22" y="927">each efficiency gain shortens</text>
+    <text x="22" y="942">the economic life of the last</text>
+  </g>
+  <!-- L8 sink -->
+  <path d="M552,182 Q760,240 820,250" stroke="#b3261e" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ar)"/>
+  <rect x="820" y="226" width="200" height="54" fill="#f3d9d4" stroke="#b3261e"/>
+  <text x="830" y="244" font-size="11.5" font-weight="bold" fill="#b3261e">L8 · Orientation leak</text>
+  <text x="830" y="259" font-size="11" fill="#1d1a16">valuation schema mistakes the</text>
+  <text x="830" y="273" font-size="11" fill="#1d1a16">loop's echo for outside signal</text>
+
+  <text x="600" y="992" text-anchor="middle" font-size="14" fill="#1d1a16" font-style="italic">Are we observing genuine demand, or the consequences of investing in its expectation?</text>
+</svg>
+<figcaption><b>Figure 4.</b> The original sketch redrawn: Boyd's final OODA diagram (1995) laid over the AI investment cycle, with eight points where value leaves the loop. Red marks value that is lost or reassigned. Gold (L7) marks value that moves to physical inputs. Green (L5) marks value created for users but not captured by investors. Figures come from the sources in §11 and are cited in the text.</figcaption>
+</figure>
+
+<h3>5.1 The eight leaks, node by node</h3>
+
+<p><span class="caps">L1 · Phantom demand.</span> This is the core reflexive leak. When a hyperscaler's capex becomes a chipmaker's revenue, which becomes a forecast, which justifies more capex, the system counts the same dollar several times as evidence. The more vendor financing, equity cross-holdings and compute-for-equity deals there are in the loop, the larger this leak. On paper it destroys nothing. It inflates the <em>observation</em> that every later decision depends on.</p>
+
+<p><span class="caps">L2 · Model-layer margin.</span> This is where the Promethean inversion hits hardest. Frontier model labs, the "AI Developers &amp; Platforms" node, take the full axiological hit. Their valuations are the most systemic and their revenue is the most extrinsic and most exposed to substitution. When a third of the work can be done for a twenty-fifth of the bill, the price ceiling for any task that "good enough" can handle is set in Hangzhou and Beijing, not San Francisco.</p>
+
+<p><span class="caps">L3 · Depreciation.</span> Philipp Dubach calculates that the 2026 hyperscaler capex programme alone carries an annual depreciation charge of about $115–140 billion on five-year asset lives.<sup><a href="#s13">13</a></sup> Five years may be optimistic. Every gain in efficiency, including the ones Chinese labs publish in the open, shortens the economic life of the previous generation of chips. The accounting life and the economic life of a GPU are drifting apart.</p>
+
+<p><span class="caps">L4 · Credit.</span> As the loop moves from equity to debt, its leaks stop being optional. Equity can absorb a disappointing year. Debt requires coupons. Because AI-linked financing now makes up roughly half of US investment-grade issuance, the hype cycle is becoming tied to the credit cycle (§7).</p>
+
+<p><span class="caps">L5 · Consumer surplus.</span> This leak is good news for society and bad news for investors. If intelligence becomes cheap, most of its value goes to the people and firms who use it, just as cheap bandwidth after 2001 enriched the users of the internet rather than the people who laid the fibre. Value is created but not captured, so it never appears in the loop's revenue line.</p>
+
+<p><span class="caps">L6 · Special-purchaser premium.</span> Capex priced at strategic worth (§3.1) becomes an impairment when a non-special buyer has to set the price. The resale market for compute is where this leak shows up first.</p>
+
+<p><span class="caps">L7 · Jevons migration.</span> This is the strangest leak. It doesn't drain the loop. It redirects it. Cheaper tokens mean more tokens, which means more compute, more power, more grid connections and more land. Value moves towards whatever input is physically scarce. §6 explains in detail why this happens.</p>
+
+<p><span class="caps">L8 · Orientation.</span> This is the leak beneath all the others: a valuation schema that cannot distinguish the loop's echo from an outside signal. Boyd would say the loop is orienting on its own reflection.</p>
+
+<h3>5.2 Who is hedged and who is exposed</h3>
+
+<ul>
+  <li><strong>Hyperscalers are partly hedged.</strong> They host whatever weights customers want. Western enterprises worried about data governance commonly run open-weight Chinese models such as Qwen or DeepSeek on private US cloud infrastructure like AWS or Azure, so that no data leaves the company.<sup><a href="#s8">8</a></sup> Cheaper tokens may even <em>raise</em> compute demand through Jevons' paradox, which keeps the loop turning.</li>
+  <li><strong>Chipmakers</strong> ride volume, with export-control and depreciation risk on top.</li>
+  <li><strong>Frontier model labs</strong>, the "AI Developers &amp; Platforms" node, take the full axiological hit. Their valuations are the most systemic and their revenue is the most extrinsic and most exposed to substitution.</li>
+  <li><strong>Lenders</strong> sit in a separate position. Financing data centres against GPUs on five-year useful lives means taking security over assets whose replacement cost falls fastest exactly when the trough arrives.</li>
+</ul>
+
+<table>
+<thead><tr><th>Layer</th><th>Dominant value dimension priced</th><th>Exposure to open-weight repricing</th><th>Jevons effect</th><th>Hype-cycle position</th><th>Net risk</th></tr></thead>
+<tbody>
+<tr><td>Frontier model labs</td><td>Systemic → assumed extrinsic</td><td class="hi">Direct and severe</td><td class="hi">Volume up, price down; revenue depends on elasticity (§6.6)</td><td>Sliding towards trough</td><td class="hi">Highest</td></tr>
+<tr><td>Hyperscalers / cloud</td><td>Extrinsic + intrinsic (distribution)</td><td class="mid">Indirect; they host the open models</td><td class="lo">Positive if demand is elastic</td><td>Cresting</td><td class="mid">Moderate; special-purchaser premium</td></tr>
+<tr><td>Chipmakers</td><td>Extrinsic (volume)</td><td class="mid">Indirect; efficiency reduces FLOPs per task</td><td class="lo">Positive in the long run, volatile in the short run</td><td>Held at peak</td><td class="mid">Moderate to high (multiple risk)</td></tr>
+<tr><td>Data-centre real estate and power</td><td>Intrinsic (location, connection)</td><td class="lo">Low</td><td class="lo">Strongly positive: the scarce input</td><td>Climbing</td><td class="lo">Lower, but exposed to tenant credit</td></tr>
+<tr><td>Lenders to the build-out</td><td>Collateral value</td><td class="mid">Via tenant and borrower failure</td><td class="mid">Mixed: volume helps, obsolescence hurts</td><td>Tied to the credit cycle</td><td class="hi">High where security is over chips</td></tr>
+<tr><td>End users / enterprises</td><td>Consumer surplus</td><td class="lo">Benefit</td><td class="lo">Benefit</td><td>Slope of enlightenment</td><td class="lo">Net winners</td></tr>
+</tbody>
+</table>
+
+<!-- ============ JEVONS ============ -->
+<h2 id="jevons"><span class="num">§6</span>Jevons' paradox in detail</h2>
+
+<p>Jevons' paradox explains how a loop whose prices are collapsing at one node can keep growing at the others. It is the strongest argument against a simple bubble thesis, and also the most widely misunderstood. It needs to be stated carefully.</p>
+
+<h3>6.1 The original observation (1865)</h3>
+
+<p>In <em>The Coal Question</em> (1865), the economist William Stanley Jevons dealt with a fear of his time: that Britain's industrial supremacy would end as its coal seams ran out. The obvious answer was efficiency. Better engines would get more work from each ton of coal and make the reserves last longer. Jevons argued the opposite. He wrote that it is "wholly a confusion of ideas" to suppose that the economical use of fuel means less consumption.</p>
+
+<p>His evidence came from the history of the steam engine. Thomas Newcomen's atmospheric engine of 1712 was so wasteful that it paid only at the pithead, where coal was nearly free. James Watt's separate condenser after 1769 roughly quadrupled thermal efficiency. Later high-pressure compounding improved it further. Each improvement made steam power economic somewhere it had not been before: in cotton mills away from the coalfields, in ironworks, then in locomotives and ships. British coal consumption did not fall as engines improved. It rose enormously. Efficiency had not saved coal. It had <em>unlocked demand for what coal could do</em>.</p>
+
+<p>The key move in Jevons' reasoning is to separate the <strong>resource</strong> (coal) from the <strong>service</strong> it provides (motive power, heat, work). People don't want coal. They want work done. Efficiency lowers the price of the <em>service</em>. Whether consumption of the <em>resource</em> then rises or falls depends entirely on how strongly demand for the service responds to its price.</p>
+
+<h3>6.2 The mechanism, formally</h3>
+
+<p>Let <em>E</em> be the amount of the resource consumed (coal, or for us, GPU-hours of compute). Let <em>ε</em> be efficiency, the units of service obtained per unit of resource (work per ton, or tokens or completed tasks per GPU-hour). The service delivered is then:</p>
+
+<div class="math">
+S = ε · E &nbsp;&nbsp;⇒&nbsp;&nbsp; E = S / ε
+<span class="note">Service equals efficiency times resource. Holding output fixed, doubling efficiency halves the resource needed. This is the "engineering" or naive expectation.</span>
+</div>
+
+<p>But output is not fixed. If the resource costs <em>p<sub>E</sub></em> per unit, the effective price of a unit of service is:</p>
+
+<div class="math">
+p<sub>S</sub> = p<sub>E</sub> / ε
+<span class="note">Each efficiency gain is a price cut on the service, even if the resource price doesn't move. A tenfold gain in tokens per GPU-hour is a 90% price cut on tokens.</span>
+</div>
+
+<p>Demand for the service responds to its price with a <strong>price elasticity</strong> η, defined as the percentage change in quantity demanded for a one per cent change in price (negative in the normal case, so we work with its magnitude |η|). Taking logarithms and differentiating with respect to efficiency, holding the resource price constant:</p>
+
+<div class="math">
+ln E = ln S − ln ε<br>
+∂ ln S / ∂ ln ε = |η| &nbsp;&nbsp;(since a 1% efficiency gain is a 1% service price cut)<br>
+<strong>∂ ln E / ∂ ln ε = |η| − 1</strong>
+<span class="note">This is the whole paradox in one line. The response of resource consumption to an efficiency gain equals the elasticity of demand for the service, minus one.</span>
+</div>
+
+<p>There are three cases:</p>
+
+<ul>
+  <li><strong>|η| &lt; 1 (inelastic demand):</strong> efficiency saves resource. Usage rises a little, but not enough to offset the gain. Some of the saving is "taken back," which economists call <em>rebound</em>, but consumption still falls. This is the case conservationists hope for.</li>
+  <li><strong>|η| = 1 (unit elasticity):</strong> the gain is exactly offset. Resource consumption doesn't change and the efficiency gain becomes extra service.</li>
+  <li><strong>|η| &gt; 1 (elastic demand):</strong> <em>backfire</em>. Resource consumption <em>rises</em> because of the efficiency gain. This is Jevons' paradox in the strict sense.</li>
+</ul>
+
+<figure>
+<svg viewBox="0 0 960 430" role="img" aria-label="Resource consumption under different demand elasticities as efficiency rises">
+  <rect width="960" height="430" fill="#fffdf8"/>
+  <g transform="translate(40,20)">
+    <line x1="80" y1="360" x2="580" y2="360" stroke="#4a4339"/>
+    <line x1="80" y1="360" x2="80" y2="30" stroke="#4a4339"/>
+    <g font-size="12" fill="#4a4339" text-anchor="middle">
+      <text x="80" y="380">1×</text><text x="224" y="380">2×</text><text x="416" y="380">5×</text><text x="560" y="380">10×</text>
+      <text x="330" y="404">efficiency gain ε (tokens per GPU-hour), log scale</text>
+    </g>
+    <g font-size="12" fill="#4a4339" text-anchor="end">
+      <text x="72" y="364">0.1×</text><text x="72" y="204">1×</text><text x="72" y="44">10×</text>
+    </g>
+    <text x="22" y="200" font-size="12" fill="#4a4339" transform="rotate(-90 22 200)" text-anchor="middle">compute consumed E (log)</text>
+    <line x1="80" y1="200" x2="580" y2="200" stroke="#cbbd9f" stroke-dasharray="3 3"/>
+    <!-- naive |eta|=0 -->
+    <line x1="80" y1="200" x2="560" y2="360" stroke="#7d7364" stroke-width="2" stroke-dasharray="2 3"/>
+    <line x1="80" y1="200" x2="560" y2="280" stroke="#2f6b57" stroke-width="3"/>
+    <line x1="80" y1="200" x2="560" y2="200" stroke="#1f3a5f" stroke-width="3"/>
+    <line x1="80" y1="200" x2="560" y2="120" stroke="#a87b1f" stroke-width="3"/>
+    <line x1="80" y1="200" x2="560" y2="40" stroke="#b3261e" stroke-width="3"/>
+    <g font-size="12.5">
+      <text x="566" y="364" fill="#7d7364">|η| = 0 (naive engineering view)</text>
+      <text x="566" y="284" fill="#2f6b57">|η| = 0.5 — efficiency saves</text>
+      <text x="566" y="204" fill="#1f3a5f">|η| = 1 — exactly offset</text>
+      <text x="566" y="124" fill="#a87b1f">|η| = 1.5 — backfire</text>
+      <text x="566" y="44" fill="#b3261e">|η| = 2 — strong backfire</text>
+    </g>
+  </g>
+</svg>
+<figcaption><b>Figure 5.</b> E ∝ ε<sup>(|η| − 1)</sup>. At a tenfold efficiency gain, compute consumed falls to about 0.32× if demand elasticity is 0.5, stays at 1× if it is 1, rises to about 3.2× at 1.5, and rises tenfold at 2. Whether the build-out is a bubble or underbuilt depends largely on which line AI is on, and that is an empirical question about elasticity, not about technology.</figcaption>
+</figure>
+
+<h3>6.3 The rebound taxonomy</h3>
+
+<p>Energy economists since the 1980s, notably Daniel Khazzoom and Leonard Brookes, whose work Harry Saunders formalised as the Khazzoom–Brookes postulate, have broken the paradox into channels. Each channel has an AI equivalent:</p>
+
+<ul>
+  <li><strong>Direct rebound:</strong> cheaper service leads to more of the same service. <em>AI:</em> cheaper tokens mean longer contexts, more retries, more verbose reasoning and more calls per task.</li>
+  <li><strong>Indirect rebound:</strong> money saved on the service is spent on other things that also use the resource. <em>AI:</em> savings from cheaper inference are reinvested in new AI features, fine-tuning and retrieval pipelines, all of which use compute.</li>
+  <li><strong>Economy-wide or general-equilibrium rebound:</strong> cheaper service changes production structures, prices and growth, creating whole new industries that use the resource. <em>AI:</em> agentic systems, autonomous software engineering, AI-native firms and machine-to-machine workflows. These are uses that did not exist at the old price.</li>
+  <li><strong>Transformational rebound:</strong> the service becomes infrastructure, and social practices reorganise around it, just as cities reorganised around cheap motive power and later electricity. <em>AI:</em> intelligence as a utility, always on, built into every interface, used without anyone noticing.</li>
+</ul>
+
+<p>Backfire happens when these channels together exceed 100%. Historically that has been most likely for <strong>general-purpose technologies</strong> at an early stage, where the efficiency gain hits a service with large latent demand and many uses that no one has yet found. Coal in 1865, electricity in 1910, computing in 1970 and bandwidth in 2000 all qualified. The bull case for the AI loop is that intelligence qualifies too.</p>
+
+<h3>6.4 Why AI is a strong candidate for backfire</h3>
+
+<p>There are four reasons to think the elasticity of demand for machine intelligence is well above one, at least at today's prices:</p>
+
+<ol>
+  <li><strong>Latent demand is enormous and threshold-gated.</strong> Many tasks are worth automating only below a certain cost per attempt. Each price fall crosses a new threshold and opens a new tier of use cases. That is the definition of elastic demand.</li>
+  <li><strong>Agents multiply token use.</strong> An agentic workflow plans, calls tools, checks, reflects and retries. It can use one or two orders of magnitude more tokens than a single chat exchange for the same nominal task. Cheaper tokens make agents economic, and agents make token demand explode. The efficiency gain finances its own rebound.</li>
+  <li><strong>Reasoning trades compute for quality.</strong> Test-time compute, where a model "thinks longer" for a better answer, means each price cut can be spent on <em>quality</em> instead of saved. Users will rarely take the cheaper, worse answer when the better one costs only a little more.</li>
+  <li><strong>Open weights spread demand into self-hosting.</strong> Open models move inference onto private clouds and on-premises clusters, adding compute demand outside the frontier labs' own figures. That is exactly the AWS Bedrock and enterprise self-hosting pattern described above.</li>
+</ol>
+
+<p>When the DeepSeek shock of January 2025 knocked chip stocks down, Microsoft's chief executive Satya Nadella responded publicly, as far as I recall, by invoking Jevons by name. His point was that cheaper, more efficient AI would make use explode and turn AI into a commodity people can't get enough of. The market's initial fear was a bet that |η| &lt; 1: efficiency means fewer GPUs. The recovery was a bet that |η| &gt; 1. Months of order books since then suggest the second bet was closer to the truth, at least so far.</p>
+
+<h3>6.5 Who captures a Jevons boom: the crucial distinction</h3>
+
+<p>This is where Jevons connects back to axiology and to the leaks in Figure 4. The paradox says the <strong>resource</strong> is consumed more. It says nothing good about the <strong>efficiency innovator</strong>.</p>
+
+<p>In the nineteenth century, the great beneficiaries of more efficient steam engines were coal owners, railway companies and industrialists who used cheap motive power. Engine builders did well, but they competed in a market that soon commoditised, and Watt's patent premium ended in 1800. The value of the efficiency gain went to <em>the scarce input</em> and <em>the downstream user</em>, not to the people who produced the efficiency.</p>
+
+<div class="thesis">The Jevons–axiology synthesis: <strong>a Jevons boom raises the value of the scarce input and the downstream use, and lowers the value of the efficiency itself.</strong> In AI, Chinese open weights are the efficiency. They make the service cheaper and drive volume. The extra value goes to whoever controls the bottleneck input (compute, power, grid connection, cooling, land) and to the users (consumer surplus, L5). It does not go to whoever sells the model at a premium.</div>
+
+<p>This is why the loop in Figure 4 can keep turning while its model node is repriced. Chinese releases are efficiency shocks. Through Jevons, efficiency shocks can <em>increase</em> demand for hyperscaler capacity and chips while <em>decreasing</em> what anyone will pay per unit of intelligence. The loop's volume and its margins move apart.</p>
+
+<p>Revenue arithmetic at the model layer makes this precise. A model provider's revenue is price times quantity: <em>R = p<sub>S</sub> · S</em>. If prices fall because of competition, revenue rises only if |η| &gt; 1 <em>for that provider's own product</em>. That is a much stricter condition than market-wide elasticity, because the volume can go to a cheaper competitor. Vercel's figures show this happening: open-weight models' share of tokens grew far faster than their share of spend. Market volume rose. The premium providers' share of the extra volume did not.</p>
+
+<h3>6.6 Where the paradox runs out</h3>
+
+<p>Jevons is not a guarantee. It operates under specific conditions, and every one of them can fail:</p>
+
+<ul>
+  <li><strong>Elasticity is not constant.</strong> It falls as demand becomes saturated. Lighting is the classic example. Over centuries of efficiency gains it showed spectacular backfire, until rich households had all the light they could use, and then elasticity dropped. AI's first-tier uses (chat, drafting, coding help) may already be close to saturation for many users. The question is whether agentic uses refill the pipeline quickly enough.</li>
+  <li><strong>Short-run and long-run elasticity differ.</strong> In the short run, demand is inelastic. New uses take years to invent, integrate and trust. In the long run it is elastic. But capex is committed in the short run and paid for over the life of the assets. This mismatch is the formal link between Jevons and the Hype Cycle: <em>the trough of disillusionment is the period between short-run inelasticity and long-run elasticity</em>. The build-out can be right about 2032 and still go bankrupt in 2028. Figure 6 illustrates this.</li>
+  <li><strong>Efficiency on the compute side cuts both ways.</strong> Some efficiency gains (mixture-of-experts designs, sparsity, distillation, quantisation) reduce FLOPs per token instead of raising tokens per dollar of a fixed chip. If those gains outpace rebound at the hardware layer, GPU demand per unit of service falls even while service demand grows. Rebound then strengthens demand for <em>some</em> inputs (power, memory bandwidth) while weakening it for others (the current GPU generation), and that speeds up depreciation (L3).</li>
+  <li><strong>Binding constraints redirect the rebound.</strong> If power or grid connections are the binding constraint, extra demand turns into <em>higher prices for the scarce input</em> rather than more chips installed. This is the strongest form of L7: the rents go to whoever owns the connection.</li>
+  <li><strong>Export controls split the paradox geographically.</strong> In China, Jevons rebound from cheap open models hits a supply of advanced chips that is restricted by US export controls. The rebound therefore goes into domestic silicon, efficiency research and cheap power in the interior, which in turn yields more efficiency shocks for the West. Each side's Jevons dynamic feeds the other's.</li>
+</ul>
+
+<figure>
+<svg viewBox="0 0 960 380" role="img" aria-label="Short-run versus long-run demand against installed capacity">
+  <rect width="960" height="380" fill="#fffdf8"/>
+  <line x1="80" y1="320" x2="900" y2="320" stroke="#4a4339"/>
+  <line x1="80" y1="320" x2="80" y2="30" stroke="#4a4339"/>
+  <text x="890" y="345" font-size="12" text-anchor="end" fill="#4a4339">time →</text>
+  <text x="40" y="180" font-size="12" fill="#4a4339" transform="rotate(-90 40 180)" text-anchor="middle">compute capacity / demand</text>
+  <!-- capacity installed -->
+  <path d="M90,300 C250,280 330,120 470,90 C600,65 760,60 890,58" fill="none" stroke="#1f3a5f" stroke-width="3.5"/>
+  <text x="560" y="62" font-size="13" fill="#1f3a5f">installed capacity (capex committed in the short run)</text>
+  <!-- demand -->
+  <path d="M90,305 C250,295 380,250 500,215 C640,170 760,80 890,40" fill="none" stroke="#b3261e" stroke-width="3.5"/>
+  <text x="700" y="160" font-size="13" fill="#b3261e">realised demand: |η| low in short run, high in long run</text>
+  <!-- gap shading -->
+  <path d="M330,165 C400,110 440,95 470,90 C600,65 680,62 760,60 L760,92 C640,170 560,195 500,215 C420,240 370,250 330,262 Z" fill="#b3261e" opacity=".12"/>
+  <text x="470" y="160" font-size="14" fill="#b3261e" font-weight="bold" text-anchor="middle">THE TROUGH</text>
+  <text x="470" y="178" font-size="12" fill="#b3261e" text-anchor="middle">excess capacity · falling utilisation</text>
+  <text x="470" y="194" font-size="12" fill="#b3261e" text-anchor="middle">depreciation runs; debt is serviced</text>
+  <line x1="780" y1="40" x2="780" y2="320" stroke="#2f6b57" stroke-dasharray="4 4"/>
+  <text x="784" y="300" font-size="12" fill="#2f6b57">Jevons catches up:</text>
+  <text x="784" y="315" font-size="12" fill="#2f6b57">who still owns the assets?</text>
+</svg>
+<figcaption><b>Figure 6.</b> The time structure of the paradox. Capex is committed against long-run elasticity but must be paid for during the short run. The shaded gap is where the Hype Cycle's trough, the lender's covenant tests and the depreciation schedule all meet. Jevons may vindicate the build-out without vindicating those who financed it.</figcaption>
+</figure>
+
+<h3>6.7 Jevons as a hidden variable in the OODA loop</h3>
+
+<p>Returning to Boyd, Jevons is a variable most valuation models leave out of Orientation entirely. A model that says "cheaper Chinese AI means less Western compute demand" is orienting on |η| &lt; 1. A model that says "cheaper AI means unlimited demand, so every node wins" is orienting on |η| &gt; 1 <em>and</em> assuming the gains spread evenly. Both are wrong in the same way: they treat the loop as one undifferentiated thing. A better orientation holds three propositions together:</p>
+
+<ol>
+  <li>Aggregate demand for intelligence is probably elastic, so the build-out is <em>directionally</em> justified.</li>
+  <li>Value under elastic demand goes to scarce inputs and users, not to efficiency sellers, so the <em>distribution</em> of returns is not what the valuations assume.</li>
+  <li>Elasticity rises over time while capex is paid for now, so the <em>timing</em> creates a trough that the financing structure may not survive.</li>
+</ol>
+
+<p class="aphorism">Efficiency does not save the resource · It saves the user · It enriches the bottleneck</p>
+
+<!-- ============ CREDIT ============ -->
+<h2 id="credit"><span class="num">§7</span>Hype meets credit: collateral, depreciation and the lender's view</h2>
+
+<p>Everything above matters to an equity investor. It matters more to a lender, because a lender's return is capped while its loss is not. The AI build-out is moving into the place where the Hype Cycle and the credit cycle meet. Morgan Stanley's estimates of AI-linked issuance, together with the reported share of investment-grade issuance, mean the loop's leaks increasingly turn into covenant tests.</p>
+
+<p>From the point of view of a fixed-charge receiver, the questions are concrete:</p>
+
+<ul>
+  <li><strong>What is the collateral actually worth on enforcement?</strong> A data centre has three layers of value. The <em>land and grid connection</em> holds value and has intrinsic, locational scarcity, which Jevons strengthens. The <em>shell and mechanical and electrical plant</em> holds moderate value but is exposed to specification obsolescence as rack densities and cooling methods change. The <em>compute fit-out</em>, the chips, loses value fastest, and every efficiency shock makes that faster. Security that relies on the third layer is security over a melting asset.</li>
+  <li><strong>Who is the tenant, and on what terms?</strong> Neocloud providers and model labs are the most exposed nodes in Figure 4, and they are often the tenants. A long lease to a lab whose margin is being repriced by open weights carries the lab's axiological risk inside a property instrument.</li>
+  <li><strong>Is the valuation at market value or at worth?</strong> A valuation that assumes a special purchaser's need (§3.1) overstates what will be recovered on enforcement. The Red Book basis matters.</li>
+  <li><strong>Does the depreciation schedule match economic life?</strong> If the accounting life is five years and the economic life is three, earnings are overstated now and the collateral cover is overstated with them.</li>
+</ul>
+
+<p>Seen this way, the most defensible lending is against the layer that Jevons makes more valuable: powered, connected land with flexible specifications. The least defensible is against the layer that open-weight competition and efficiency make less valuable: GPUs pledged as primary security, and tenancies whose income depends on premium model pricing.</p>
+
+<!-- ============ COUNTER ============ -->
+<h2 id="counter"><span class="num">§8</span>The counter-case, stated honestly</h2>
+
+<p>The counter-case deserves stating honestly. Frontier capability may keep a premium where the last margin matters: agentic reliability, regulated and security-sensitive work, and sovereignty concerns about Chinese-origin models. If capability gains compound, a lead of about seven months could matter more than it does now. Open-weight adoption figures like OpenRouter's are also skewed towards developers and may overstate enterprise displacement.</p>
+
+<div class="grid2">
+  <div class="card"><h4>1 · The last 16% may be the whole game</h4>In agentic work, errors compound across steps. A model that is 95% reliable per step finishes a 20-step task about 36% of the time. One that is 99% reliable finishes about 82% of the time. Small benchmark gaps can become large gaps in completed tasks, and buyers pay for completed tasks.</div>
+  <div class="card"><h4>2 · Trust is intrinsic value</h4>For defence, finance, health and critical infrastructure, provenance, auditability and jurisdiction are part of the product. Western frontier models may hold intrinsic value in exactly the regulated sectors where AI spending is largest.</div>
+  <div class="card"><h4>3 · Compounding leads</h4>If AI begins to speed up AI research, a seven-month lead could widen rather than stay constant. The Promethean bet is a bet on compounding, and if it pays, today's systemic valuations will look cheap.</div>
+  <div class="card"><h4>4 · Selection bias in the adoption data</h4>OpenRouter and developer gateways favour cost-sensitive builders. Enterprise contracts, procurement inertia and bundling with existing cloud relationships may be far less elastic to price than those token shares suggest.</div>
+  <div class="card"><h4>5 · Policy can close the market</h4>Restrictions on Chinese-origin models in government, critical-infrastructure or regulated use could fence off a premium Western market and turn the commodity front into a protected one.</div>
+  <div class="card"><h4>6 · Hyperscalers' FCF can flip</h4>One view holds that the platform owners can compress free cash flow while they build and then switch to very large free cash flow once projects complete, re-rating their multiples. If that happens, the special-purchaser premium turns out to have been foresight.</div>
+</div>
+
+<p>None of these refutes the argument. Each one <em>relocates</em> it. Every counter-point is a claim that some part of the Western offer is intrinsic rather than extrinsic. The analytical task is therefore not to choose between bull and bear. It is to measure, firm by firm, how much of each valuation rests on value that would survive the free release of a model 90% as good.</p>
+
+<!-- ============ SIGNALS ============ -->
+<h2 id="signals"><span class="num">§9</span>Signals to watch: an OODA dashboard for the trough</h2>
+
+<p>If the danger is an orientation that confuses the loop's echo with an outside signal, the remedy is to watch the variables that only <em>outside</em> demand can move.</p>
+
+<table>
+<thead><tr><th>Signal</th><th>What it tests</th><th>Leak</th><th>Warning sign</th></tr></thead>
+<tbody>
+<tr><td>AI revenue ÷ AI capex across hyperscalers</td><td>Real demand against the loop's own spending</td><td>L1</td><td>Ratio stuck near 0.1–0.2 while capex grows</td></tr>
+<tr><td>Price per token at a fixed capability tier</td><td>Speed of commoditisation</td><td>L2</td><td>Western list prices cut to follow Chinese releases</td></tr>
+<tr><td>Share of tokens against share of spend (gateways)</td><td>Whether volume is going to cheap providers</td><td>L2 / L7</td><td>Token-share growth far ahead of spend share</td></tr>
+<tr><td>Secondary-market prices for compute</td><td>Market value against special-purchaser worth</td><td>L6 / L3</td><td>Hyperscalers or labs selling excess capacity</td></tr>
+<tr><td>GPU rental rates by chip generation</td><td>Economic against accounting life</td><td>L3</td><td>Prior-generation rates falling faster than depreciation</td></tr>
+<tr><td>AI-linked credit spreads and covenant headroom</td><td>Hype cycle passing into credit cycle</td><td>L4</td><td>Wider spreads on neocloud or data-centre debt</td></tr>
+<tr><td>Prices for power-purchase agreements and grid connections</td><td>Jevons migration to scarce inputs</td><td>L7</td><td>(For the bottleneck, a sign of strength)</td></tr>
+<tr><td>Enterprise task completion against pilot counts</td><td>Movement from short-run to long-run elasticity</td><td>L5 / L8</td><td>Many pilots, few production deployments</td></tr>
+</tbody>
+</table>
+
+<!-- ============ CODA ============ -->
+<h2 id="coda"><span class="num">§10</span>Coda: Dào, Lǐ, Shì and the synthesis in one line</h2>
+
+<p>The Chinese triad <strong>道 理 勢</strong> (<em>Dào, Lǐ, Shì</em>) gives a closing structure for the argument.</p>
+
+<p><strong>道 Dào, the Way.</strong> The underlying movement is real. Machine intelligence is a general-purpose technology, and its adoption S-curve will continue whatever happens to valuations. The technological and competitive shifts are real.</p>
+
+<p><strong>理 Lǐ, the pattern.</strong> The principles by which value is assigned are where the error lies. The loop prices systemic value as intrinsic, counts its own echo as demand, and assumes the gains of a Jevons boom go to the producer of the efficiency. The valuations are complex because the pattern of value differs from the pattern of price.</p>
+
+<p><strong>勢 Shì, the propensity of the configuration.</strong> This is the strategic disposition that decides who wins without a decisive battle. In Sunzi's image, water finds the low ground and a rolling stone gains momentum from the slope. The Chinese open-weight strategy is a strategy of <em>shì</em>. It does not try to beat the Western frontier at its peak. It levels the ground under the peak so that value flows elsewhere: to users, to scarce inputs, and to a diffusion ecosystem whose centre is not in the West. A force that is more advanced but badly positioned can lose to one that is less advanced and well positioned. That is the precise sense in which the Western Promethean impulse is at risk of being underpriced.</p>
+
+<div class="thesis">The technological shift is real, and the West leads it. But Western valuations capitalise a frontier advantage as if it were intrinsic value, while Chinese open weights are steadily turning it into extrinsic, commodity value. <strong>The Hype Cycle's trough will fall hardest on whichever layer of the loop has priced the fire rather than the hearth.</strong></div>
+
+<p>One final turn. Jevons shows that the fire, once given away, will be used far more than anyone expected, and that its value will go to whoever owns the hearth, the fuel and the chimney rather than the person who gave it away. So the question at the foot of the diagram can be sharpened. It is not only whether we are seeing genuine demand or the consequences of investing in its expectation. It is also this: <em>when the genuine demand arrives, as Jevons suggests it will, who will own the part of the loop it flows into?</em></p>
+
+<p class="aphorism">Follow the money · Then follow the bottleneck · Then ask who holds the security</p>
+
+<!-- ============ SOURCES ============ -->
+<h2 id="sources"><span class="num">§11</span>Sources and notes</h2>
+<ol class="sources">
+  <li id="s1">XTB, "Will massive AI investments bring dark clouds over Wall Street?" — hyperscaler AI spend of about $760bn against AI revenue of $80–150bn; Morgan Stanley's estimate of about $570bn AI-linked debt; share of US IG issuance. <a href="https://www.xtb.com/en/market-analysis/will-massive-ai-investments-bring-dark-clouds-over-wall-street">xtb.com</a></li>
+  <li id="s2">Gotrade News, "Hyperscaler AI Capex Tops $500 Billion Even as Burry Shorts the Chip Trade" — Scion's short on SOXX; P/E comparison; Meta's sale of excess compute and the effect on CoreWeave and Nebius. <a href="https://www.heygotrade.com/en/news/ai-capex-500-billion-michael-burry-semiconductor-short/">heygotrade.com</a></li>
+  <li id="s3">Invezz via TradingView, "Why hyperscalers can't slow spending without losing the AI war" — capex near $600bn; the "Darwinian" dynamic of capacity. <a href="https://www.tradingview.com/news/invezz:751717ae0094b:0-looking-ahead-to-2026-why-hyperscalers-can-t-slow-spending-without-losing-the-ai-war/">tradingview.com</a></li>
+  <li id="s4">Futuriom, "Hyperscaler AI Spending Doubts Rising" (April 2026) — about $700bn pledged; capex growth of about 80% against revenue growth of about 15.5%; Oracle's capex as a share of revenue. <a href="https://www.futuriom.com/articles/news/ctp-is-hyperscaler-ai-spending-sustainable/2026/04">futuriom.com</a></li>
+  <li id="s5">Second Talent, "AI Trends in China 2026" — about 61% of OpenRouter tokens; 60–90% cheaper; four frontier-class models in seven weeks; Vercel's 29% of tokens on under 4% of spend. <a href="https://www.secondtalent.com/resources/ai-trends-in-china/">secondtalent.com</a></li>
+  <li id="s6">Second Talent, "US vs China AI models: cost, performance, value" — Epoch AI's seven-month lag; CAISI's eight-month estimate; 16% index gap; Qwen derivative count. <a href="https://www.secondtalent.com/resources/us-vs-china-ai-models-cost-performance-value/">secondtalent.com</a></li>
+  <li id="s7">Deccan Chronicle, "China's DeepSeek unveils V4.1-Flash model" — Artificial Analysis on the DeepSeek "death zone." <a href="https://www.deccanchronicle.com/amp/technology/chinas-deepseek-unveils-v41-flash-model-1986393">deccanchronicle.com</a></li>
+  <li id="s8">Syntax &amp; Signal, "China's AI Blitz Creates a 'Death Zone' for OpenAI and Anthropic" — token-price comparisons; Hugging Face download share; self-hosting of Chinese open weights on US clouds. <a href="https://syntaxandsignal.tech/blog/chinas-ai-blitz-death-zone-openai-anthropic-2026.md">syntaxandsignal.tech</a></li>
+  <li id="s9">Express Tribune, "Chinese AI rivals intensify competition as DeepSeek prepares new model launch" — RAND's cost comparison. <a href="https://tribune.com.pk/story/2592130/chinese-ai-rivals-intensify-competition-as-deepseek-prepares-new-model-launch?amp=1">tribune.com.pk</a></li>
+  <li id="s10">Outlook Business, "China's AI Models Are Rewriting the Cost of AI" — AWS Bedrock additions; open licences. <a href="https://www.outlookbusiness.com/deeptech/chinas-ai-models-are-rewriting-the-cost-of-ai">outlookbusiness.com</a></li>
+  <li id="s11">You.com news summary, "DeepSeek model emerges as cheapest AI to run" — Aaron Levie's warning on the collapse of AI pricing. <a href="https://for.you.com/posts/deepseek-model-emerges-as-cheapest-ai-to-run-study-finds-ebb2cdf6">for.you.com</a></li>
+  <li id="s12">Value Add VC, "Alibaba's New Qwen Model Deepens China's AI Price War" — Qwen3.8-Flash; price-war context. <a href="https://valueaddvc.com/pulse/alibaba-qwen3-8-flash-china-ai-price-war-2026">valueaddvc.com</a></li>
+  <li id="s13">Philipp D. Dubach, "AI Capex Arms Race: Who Blinks First?" — annual depreciation burden of about $115–140bn at five-year lives. <a href="https://new.philippdubach.com/posts/ai-capex-arms-race-who-blinks-first/index.md">philippdubach.com</a></li>
+</ol>
+<p class="sources"><em>Background works:</em> W. S. Jevons, <em>The Coal Question</em> (1865); J. R. Boyd, <em>Destruction and Creation</em> (1976) and "The Essence of Winning and Losing" (1995); R. S. Hartman, <em>The Structure of Value</em> (1967); G. Soros, <em>The Alchemy of Finance</em> (1987); H. D. Saunders, "The Khazzoom–Brookes Postulate and Neoclassical Growth," <em>The Energy Journal</em> (1992); Gartner Hype Cycle methodology; RICS Valuation — Global Standards ("Red Book"). Hype-cycle positions in Figure 1 and leak magnitudes in Figure 4 are interpretive. Figures are as reported by the cited sources and have not been independently verified. This essay is analysis, not investment advice.</p>
+
+</main>
+
+<footer>
+  <div class="wrap">Principia Humanitatis · London · 2026<br>Built on a conceptual synthesis of Boyd's final OODA sketch (1995) and the AI investment cycle.</div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top">↑</a>
+</body>
+</html>
