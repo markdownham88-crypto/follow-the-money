@@ -76,6 +76,16 @@ footer{border-top:3px double var(--rule);margin-top:70px;padding:30px 0 60px;tex
 .skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:9}
 .totop{position:fixed;right:18px;bottom:18px;width:42px;height:42px;border-radius:50%;background:var(--navy);color:#f6f1e6;text-align:center;line-height:42px;text-decoration:none;font-size:20px;opacity:.85}
 .totop:hover{opacity:1}
+figure.widefig{width:min(1360px,96vw);position:relative;left:50%;transform:translateX(-50%);padding:14px}
+.leakpanel{margin:12px 4px 4px;padding:12px 16px;background:#fbe3df;border-left:4px solid var(--seal);font-size:.95rem;line-height:1.55;min-height:3.2em}
+.leakpanel b{color:var(--seal)}
+#fig4svg .lk{cursor:pointer;outline:none;transition:opacity .2s}
+#fig4svg .lk:hover,#fig4svg .lk:focus,#fig4svg .lk.on{filter:drop-shadow(0 0 6px rgba(179,38,30,.75))}
+#fig4svg .flow{animation:f4flow 9s linear infinite}
+#fig4svg .drip{animation:f4drip 1.6s linear infinite}
+@keyframes f4flow{to{stroke-dashoffset:-360}}
+@keyframes f4drip{to{stroke-dashoffset:-24}}
+@media (prefers-reduced-motion:reduce){#fig4svg .flow,#fig4svg .drip{animation:none}}
 @media (max-width:720px){body{font-size:17px}h1{font-size:1.9rem}.grid2{grid-template-columns:1fr}}
 @media print{body{background:#fff}nav.toc,.totop{display:none}figure{break-inside:avoid}}
 </style>
@@ -347,176 +357,357 @@ footer{border-top:3px double var(--rule);margin-top:70px;padding:30px 0 60px;tex
 <!-- ============ LEAKS ============ -->
 <h2 id="leaks"><span class="num">§5</span>Where the mispricing lands: the loop redrawn</h2>
 
-<p>This is the part that makes the argument rigorous rather than just bearish. The risk isn't spread evenly around the diagram. Figure 4 redraws the original sketch, Boyd's OODA band above and the AI investment cycle below, and marks in seal-red the points where value <em>leaks out</em> of the loop rather than circulating within it.</p>
+<p>This is the part that makes the argument rigorous rather than just bearish. The risk isn't spread evenly around the diagram. Figure 4 redraws the original sketch, Boyd's OODA band above and the AI investment cycle below, and marks in seal-red the points where value <em>leaks out</em> of the loop rather than circulating within it. The enlarged version also shows the forces acting on the loop from outside: the thin stream of genuine external demand, the Chinese open-weight pressure front pressing on the model layer, and the Jevons arc carrying cheaper tokens into more compute and on to power, grid and land. Each node carries its Hartman value dimension and its position on the Hype Cycle, and a gauge at the hub shows external AI revenue against capex. Click any seal for detail.</p>
 
-<figure>
-<svg viewBox="0 0 1200 1010" role="img" aria-label="Redrawn AI investment cycle inside Boyd's OODA loop with eight value leaks marked">
-  <defs>
-    <marker id="a1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1f3a5f"/></marker>
-    <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#b3261e"/></marker>
-    <marker id="ag" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#a87b1f"/></marker>
-  </defs>
-  <rect width="1200" height="1010" fill="#fffdf8"/>
-  <text x="600" y="34" text-anchor="middle" font-size="24" fill="#1d1a16">The AI Investment Cycle Inside Boyd's OODA Loop — <tspan fill="#b3261e">Where the Value Leaks</tspan></text>
-
-  <!-- OODA band -->
-  <g font-size="15" font-weight="bold" fill="#fff">
-    <rect x="20" y="52" width="230" height="30" fill="#1f3a5f"/><text x="135" y="73" text-anchor="middle">OBSERVE</text>
-    <rect x="255" y="52" width="560" height="30" fill="#1f3a5f"/><text x="535" y="73" text-anchor="middle">ORIENT</text>
-    <rect x="820" y="52" width="175" height="30" fill="#1f3a5f"/><text x="907" y="73" text-anchor="middle">DECIDE</text>
-    <rect x="1000" y="52" width="180" height="30" fill="#1f3a5f"/><text x="1090" y="73" text-anchor="middle">ACT</text>
-  </g>
-  <g font-size="12" fill="#1d1a16">
-    <rect x="25" y="100" width="120" height="44" fill="#fff" stroke="#1f3a5f"/><text x="85" y="118" text-anchor="middle">Outside</text><text x="85" y="134" text-anchor="middle">information</text>
-    <rect x="25" y="154" width="120" height="44" fill="#fff" stroke="#1f3a5f"/><text x="85" y="172" text-anchor="middle">Unfolding</text><text x="85" y="188" text-anchor="middle">circumstances</text>
-    <rect x="25" y="208" width="120" height="44" fill="#fff" stroke="#1f3a5f"/><text x="85" y="226" text-anchor="middle">Unfolding</text><text x="85" y="242" text-anchor="middle">interaction</text>
-    <ellipse cx="205" cy="176" rx="50" ry="30" fill="#fff" stroke="#1f3a5f"/><text x="205" y="180" text-anchor="middle">Observations</text>
-  </g>
-  <path d="M145,122 L158,165" stroke="#1f3a5f" marker-end="url(#a1)"/>
-  <path d="M145,176 L155,176" stroke="#1f3a5f" marker-end="url(#a1)"/>
-  <path d="M145,230 L158,190" stroke="#1f3a5f" marker-end="url(#a1)"/>
-  <path d="M255,176 L300,176" stroke="#1f3a5f" stroke-width="1.5" marker-end="url(#a1)"/>
-  <text x="277" y="166" text-anchor="middle" font-size="10" fill="#1f3a5f">feed fwd</text>
-
-  <ellipse cx="535" cy="180" rx="230" ry="98" fill="#f6f1e6" stroke="#1f3a5f" stroke-width="2"/>
-  <g font-size="11.5" fill="#1d1a16" text-anchor="middle">
-    <ellipse cx="535" cy="122" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="535" y="120">Cultural traditions</text><text x="535" y="133" font-size="9.5" fill="#4a4339">Promethean vs diffusionist</text>
-    <ellipse cx="400" cy="160" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="400" y="158">Genetic heritage</text><text x="400" y="171" font-size="9.5" fill="#4a4339">moat / rent axiology</text>
-    <ellipse cx="670" cy="160" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="670" y="158">Previous experience</text><text x="670" y="171" font-size="9.5" fill="#4a4339">cloud, telecom, solar</text>
-    <ellipse cx="440" cy="230" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="440" y="228">New information</text><text x="440" y="241" font-size="9.5" fill="#4a4339">loop's own spend (!)</text>
-    <ellipse cx="630" cy="230" rx="70" ry="22" fill="#fff" stroke="#a87b1f"/><text x="630" y="228">Analysis &amp; synthesis</text><text x="630" y="241" font-size="9.5" fill="#4a4339">valuation models</text>
-  </g>
-  <!-- L8 orientation -->
-  <circle cx="535" cy="182" r="17" fill="#b3261e"/><text x="535" y="188" text-anchor="middle" font-size="14" fill="#fff" font-weight="bold">L8</text>
-
-  <path d="M765,180 L840,180" stroke="#1f3a5f" stroke-width="1.5" marker-end="url(#a1)"/>
-  <rect x="842" y="150" width="130" height="60" rx="30" fill="#fff" stroke="#1f3a5f"/>
-  <text x="907" y="176" text-anchor="middle" font-size="13">Decision</text><text x="907" y="194" text-anchor="middle" font-size="11" fill="#4a4339">(hypothesis)</text>
-  <path d="M972,180 L1020,180" stroke="#1f3a5f" stroke-width="1.5" marker-end="url(#a1)"/>
-  <rect x="1022" y="150" width="140" height="60" fill="#fff" stroke="#1f3a5f"/>
-  <text x="1092" y="176" text-anchor="middle" font-size="13">Action</text><text x="1092" y="194" text-anchor="middle" font-size="11" fill="#4a4339">(test = capex)</text>
-  <!-- feedback -->
-  <path d="M1092,210 L1092,300 L205,300 L205,208" fill="none" stroke="#1f3a5f" stroke-dasharray="6 4" marker-end="url(#a1)"/>
-  <text x="650" y="294" text-anchor="middle" font-size="12" fill="#1f3a5f">feedback — but much of what returns is the loop's own spending, re-observed as "demand"</text>
-  <path d="M535,82 L535,82" />
-  <text x="985" y="112" text-anchor="middle" font-size="11" fill="#a87b1f">implicit guidance &amp; control:</text><text x="985" y="127" text-anchor="middle" font-size="11" fill="#a87b1f">expectation → action (reflexivity)</text>
-
-  <!-- connectors from OODA to cycle -->
-  <path d="M1092,300 L1092,330 L800,430" fill="none" stroke="#1f3a5f" stroke-dasharray="3 4" marker-end="url(#a1)"/>
-  <path d="M600,400 L600,330 L205,330 L205,302" fill="none" stroke="#1f3a5f" stroke-dasharray="3 4"/>
-
-  <!-- CYCLE -->
-  <circle cx="600" cy="640" r="215" fill="none" stroke="#cbbd9f" stroke-width="22" opacity=".45"/>
-  <text x="600" y="628" text-anchor="middle" font-size="24" fill="#1f3a5f">The AI</text>
-  <text x="600" y="656" text-anchor="middle" font-size="24" fill="#1f3a5f">Investment Cycle</text>
-  <text x="600" y="680" text-anchor="middle" font-size="12" fill="#4a4339" font-style="italic">circulating value</text>
-
-  <!-- nodes -->
-  <g font-size="13" text-anchor="middle" fill="#1d1a16">
-    <rect x="510" y="398" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
-    <text x="600" y="422" font-weight="bold">Investors &amp;</text><text x="600" y="438" font-weight="bold">Capital Markets</text><text x="600" y="453" font-size="10.5" fill="#4a4339">equity · debt · private credit</text>
-
-    <rect x="695" y="500" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
-    <text x="785" y="524" font-weight="bold">Hyperscalers /</text><text x="785" y="540" font-weight="bold">Big Tech</text><text x="785" y="555" font-size="10.5" fill="#4a4339">capex ≈ $600–760bn (2026)</text>
-
-    <rect x="695" y="716" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
-    <text x="785" y="740" font-weight="bold">AI Developers</text><text x="785" y="756" font-weight="bold">&amp; Platforms</text><text x="785" y="771" font-size="10.5" fill="#4a4339">frontier model labs</text>
-
-    <rect x="510" y="818" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
-    <text x="600" y="842" font-weight="bold">Chipmakers &amp;</text><text x="600" y="858" font-weight="bold">Data Centres</text><text x="600" y="873" font-size="10.5" fill="#4a4339">GPUs · networking · power</text>
-
-    <rect x="325" y="716" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
-    <text x="415" y="740" font-weight="bold">Revenues, Growth</text><text x="415" y="756" font-weight="bold">Expectations</text><text x="415" y="771" font-size="10.5" fill="#4a4339">forecasts · valuations</text>
-
-    <rect x="325" y="500" width="180" height="62" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
-    <text x="415" y="524" font-weight="bold">Customer Demand</text><text x="415" y="540" font-weight="bold">&amp; Commitments</text><text x="415" y="555" font-size="10.5" fill="#4a4339">AI revenue ≈ $80–150bn</text>
-  </g>
-  <!-- cycle arrows clockwise -->
-  <g stroke="#1f3a5f" stroke-width="2.2" fill="none" marker-end="url(#a1)">
-    <path d="M690,440 Q750,455 770,496"/>
-    <path d="M785,562 L785,712"/>
-    <path d="M770,778 Q750,825 694,845"/>
-    <path d="M510,845 Q450,825 430,782"/>
-    <path d="M415,716 L415,566"/>
-    <path d="M430,500 Q450,455 506,440"/>
-  </g>
-
-  <!-- LEAKS -->
-  <g font-size="14" fill="#fff" font-weight="bold" text-anchor="middle">
-    <circle cx="640" cy="390" r="15" fill="#b3261e"/><text x="640" y="395">L4</text>
-    <circle cx="890" cy="530" r="15" fill="#b3261e"/><text x="890" y="535">L6</text>
-    <circle cx="890" cy="747" r="15" fill="#b3261e"/><text x="890" y="752">L2</text>
-    <circle cx="700" cy="895" r="15" fill="#b3261e"/><text x="700" y="900">L7</text>
-    <circle cx="500" cy="895" r="15" fill="#b3261e"/><text x="500" y="900">L3</text>
-    <circle cx="310" cy="747" r="15" fill="#b3261e"/><text x="310" y="752">L1</text>
-    <circle cx="310" cy="530" r="15" fill="#b3261e"/><text x="310" y="535">L5</text>
-  </g>
-  <!-- drips to sinks -->
-  <g stroke="#b3261e" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ar)">
-    <path d="M655,385 Q800,370 925,380"/>
-    <path d="M905,530 L925,530"/>
-    <path d="M905,747 L925,722"/>
-    <path d="M715,900 Q820,930 925,915"/>
-    <path d="M485,900 Q380,930 282,915"/>
-    <path d="M295,747 L282,722"/>
-    <path d="M295,530 L282,530"/>
-  </g>
-  <!-- sinks right -->
-  <g font-size="11.5" fill="#1d1a16">
-    <rect x="928" y="350" width="260" height="66" fill="#f3d9d4" stroke="#b3261e"/>
-    <text x="938" y="368" font-weight="bold" fill="#b3261e">L4 · Debt service &amp; credit risk</text>
-    <text x="938" y="384">~$570bn AI-linked issuance (2026);</text>
-    <text x="938" y="399">~half of US IG bond issuance</text>
-
-    <rect x="928" y="496" width="260" height="70" fill="#f3d9d4" stroke="#b3261e"/>
-    <text x="938" y="514" font-weight="bold" fill="#b3261e">L6 · Special-purchaser premium</text>
-    <text x="938" y="530">capex at <tspan font-style="italic">worth</tspan>, not market value;</text>
-    <text x="938" y="545">becomes impairment on resale</text>
-    <text x="938" y="560">(cf. Meta selling excess compute)</text>
-
-    <rect x="928" y="682" width="260" height="80" fill="#f3d9d4" stroke="#b3261e"/>
-    <text x="938" y="700" font-weight="bold" fill="#b3261e">L2 · Model-layer margin → open weights</text>
-    <text x="938" y="716">the DeepSeek "death zone";</text>
-    <text x="938" y="731">60–90% cheaper; ~61% OpenRouter</text>
-    <text x="938" y="746">tokens; 29% of Vercel tokens</text>
-    <text x="938" y="757">on &lt;4% of spend</text>
-
-    <rect x="928" y="878" width="260" height="76" fill="#fbf0d6" stroke="#a87b1f"/>
-    <text x="938" y="896" font-weight="bold" fill="#a87b1f">L7 · Jevons migration</text>
-    <text x="938" y="912">cheaper tokens → more compute →</text>
-    <text x="938" y="927">value moves to the scarce input:</text>
-    <text x="938" y="942">power, grid connection, land</text>
-  </g>
-  <!-- sinks left -->
-  <g font-size="11.5" fill="#1d1a16">
-    <rect x="12" y="496" width="268" height="70" fill="#e2efe9" stroke="#2f6b57"/>
-    <text x="22" y="514" font-weight="bold" fill="#2f6b57">L5 · Consumer surplus</text>
-    <text x="22" y="530">users keep the gains of cheap</text>
-    <text x="22" y="545">intelligence (telecom/fibre precedent)</text>
-    <text x="22" y="560">— value created, not captured</text>
-
-    <rect x="12" y="682" width="268" height="76" fill="#f3d9d4" stroke="#b3261e"/>
-    <text x="22" y="700" font-weight="bold" fill="#b3261e">L1 · Phantom demand (circularity)</text>
-    <text x="22" y="716">one firm's capex booked as another's</text>
-    <text x="22" y="731">revenue, re-observed as "demand";</text>
-    <text x="22" y="746">capex +80% vs revenue +15.5%</text>
-
-    <rect x="12" y="878" width="268" height="76" fill="#f3d9d4" stroke="#b3261e"/>
-    <text x="22" y="896" font-weight="bold" fill="#b3261e">L3 · Depreciation &amp; obsolescence</text>
-    <text x="22" y="912">~$115–140bn/yr at 5-year lives;</text>
-    <text x="22" y="927">each efficiency gain shortens</text>
-    <text x="22" y="942">the economic life of the last</text>
-  </g>
-  <!-- L8 sink -->
-  <path d="M552,182 Q760,240 820,250" stroke="#b3261e" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ar)"/>
-  <rect x="820" y="226" width="200" height="54" fill="#f3d9d4" stroke="#b3261e"/>
-  <text x="830" y="244" font-size="11.5" font-weight="bold" fill="#b3261e">L8 · Orientation leak</text>
-  <text x="830" y="259" font-size="11" fill="#1d1a16">valuation schema mistakes the</text>
-  <text x="830" y="273" font-size="11" fill="#1d1a16">loop's echo for outside signal</text>
-
-  <text x="600" y="992" text-anchor="middle" font-size="14" fill="#1d1a16" font-style="italic">Are we observing genuine demand, or the consequences of investing in its expectation?</text>
+<figure class="widefig" id="fig4">
+<svg id="fig4svg" viewBox="0 0 1400 1340" role="img" aria-labelledby="f4t f4d" xmlns="http://www.w3.org/2000/svg">
+<title id="f4t">The AI Investment Cycle inside Boyd's OODA loop: where the value leaks</title>
+<desc id="f4d">Boyd's OODA band above the six-node AI investment cycle. Eight numbered leaks show where value leaves the loop; a Chinese open-weight pressure front, a Jevons arc to scarce physical inputs, and a thin external-demand inflow against thick internal circulation.</desc>
+<defs>
+<marker id="m-n" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker>
+<marker id="m-r" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b3261e"/></marker>
+<marker id="m-g" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#a87b1f"/></marker>
+<marker id="m-j" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f6b57"/></marker>
+<radialGradient id="g-orient" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#efe5cf"/></radialGradient>
+<radialGradient id="g-hub" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffffff"/><stop offset=".75" stop-color="#f7f1e4"/><stop offset="1" stop-color="#efe5cf"/></radialGradient>
+<linearGradient id="g-china" x1="0" x2="1"><stop offset="0" stop-color="#b3261e" stop-opacity=".95"/><stop offset="1" stop-color="#7f1b15"/></linearGradient>
+<linearGradient id="g-band" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1f3a5f"/><stop offset="1" stop-color="#2b4c78"/></linearGradient>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#000" flood-opacity=".16"/></filter>
+<pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#b3261e" stroke-width="1.2" opacity=".18"/></pattern>
+</defs>
+<rect width="1400" height="1340" fill="#fffdf8"/>
+<text x="700.0" y="40.0" font-size="27" fill="#1d1a16" text-anchor="middle" font-weight="normal" font-style="normal" >The AI Investment Cycle Inside Boyd's OODA Loop</text>
+<text x="700.0" y="66.0" font-size="12.5" fill="#b3261e" text-anchor="middle" font-weight="normal" font-style="normal" letter-spacing="2.5">WHERE THE VALUE LEAKS · WHO IS HEDGED · WHERE THE JEVONS REBOUND FLOWS</text>
+<rect x="20" y="84" width="262" height="32" fill="url(#g-band)"/>
+<text x="151.0" y="106.0" font-size="15" fill="#f6f1e6" text-anchor="middle" font-weight="bold" font-style="normal" letter-spacing="3">OBSERVE</text>
+<rect x="292" y="84" width="670" height="32" fill="url(#g-band)"/>
+<text x="627.0" y="106.0" font-size="15" fill="#f6f1e6" text-anchor="middle" font-weight="bold" font-style="normal" letter-spacing="3">ORIENT</text>
+<rect x="972" y="84" width="200" height="32" fill="url(#g-band)"/>
+<text x="1072.0" y="106.0" font-size="15" fill="#f6f1e6" text-anchor="middle" font-weight="bold" font-style="normal" letter-spacing="3">DECIDE</text>
+<rect x="1182" y="84" width="198" height="32" fill="url(#g-band)"/>
+<text x="1281.0" y="106.0" font-size="15" fill="#f6f1e6" text-anchor="middle" font-weight="bold" font-style="normal" letter-spacing="3">ACT</text>
+<rect x="26" y="150" width="150" height="50" rx="4" fill="#fff" stroke="#1f3a5f" filter="url(#sh)"/>
+<text x="101.0" y="171.0" font-size="12.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Outside information</text>
+<text x="101.0" y="188.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >capex guidance · prices</text>
+<path d="M176,175 L192,216" stroke="#1f3a5f" stroke-width="1.4" marker-end="url(#m-n)"/>
+<rect x="26" y="214" width="150" height="50" rx="4" fill="#fff" stroke="#1f3a5f" filter="url(#sh)"/>
+<text x="101.0" y="235.0" font-size="12.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Unfolding circumstances</text>
+<text x="101.0" y="252.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >model releases · policy</text>
+<path d="M176,239 L197,236" stroke="#1f3a5f" stroke-width="1.4" marker-end="url(#m-n)"/>
+<rect x="26" y="278" width="150" height="50" rx="4" fill="#fff" stroke="#1f3a5f" filter="url(#sh)"/>
+<text x="101.0" y="299.0" font-size="12.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Unfolding interaction</text>
+<text x="101.0" y="316.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >rivals · customers · credit</text>
+<path d="M176,303 L192,256" stroke="#1f3a5f" stroke-width="1.4" marker-end="url(#m-n)"/>
+<ellipse cx="236" cy="236" rx="40" ry="34" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<text x="236.0" y="233.0" font-size="12" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Obser-</text>
+<text x="236.0" y="248.0" font-size="12" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >vations</text>
+<path d="M276,236 L322,236" stroke="#1f3a5f" stroke-width="2" marker-end="url(#m-n)"/>
+<text x="298.0" y="228.0" font-size="10" fill="#1f3a5f" text-anchor="middle" font-weight="normal" font-style="normal" >feed fwd</text>
+<ellipse cx="627" cy="232" rx="300" ry="112" fill="url(#g-orient)" stroke="#1f3a5f" stroke-width="2.4" filter="url(#sh)"/>
+<line x1="627" y1="150" x2="445" y2="205" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="627" y1="150" x2="809" y2="205" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="627" y1="150" x2="510" y2="292" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="627" y1="150" x2="744" y2="292" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="445" y1="205" x2="809" y2="205" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="445" y1="205" x2="510" y2="292" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="445" y1="205" x2="744" y2="292" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="809" y1="205" x2="510" y2="292" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="809" y1="205" x2="744" y2="292" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<line x1="510" y1="292" x2="744" y2="292" stroke="#a87b1f" stroke-width="1.1" opacity=".55" stroke-dasharray="4 3"/>
+<ellipse cx="627" cy="150" rx="82" ry="25" fill="#fff" stroke="#a87b1f" stroke-width="1.3"/>
+<text x="627.0" y="148.0" font-size="12.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Cultural traditions</text>
+<text x="627.0" y="163.0" font-size="10.2" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >Promethean vs diffusionist</text>
+<ellipse cx="445" cy="205" rx="82" ry="25" fill="#fff" stroke="#a87b1f" stroke-width="1.3"/>
+<text x="445.0" y="203.0" font-size="12.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Genetic heritage</text>
+<text x="445.0" y="218.0" font-size="10.2" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >moat / rent axiology</text>
+<ellipse cx="809" cy="205" rx="82" ry="25" fill="#fff" stroke="#a87b1f" stroke-width="1.3"/>
+<text x="809.0" y="203.0" font-size="12.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Previous experience</text>
+<text x="809.0" y="218.0" font-size="10.2" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >cloud · telecom · solar · EV</text>
+<ellipse cx="510" cy="292" rx="82" ry="25" fill="#fbe3df" stroke="#b3261e" stroke-width="1.8"/>
+<text x="510.0" y="290.0" font-size="12.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >New information</text>
+<text x="510.0" y="305.0" font-size="10.2" fill="#b3261e" text-anchor="middle" font-weight="normal" font-style="italic" >the loop's own spend (!)</text>
+<ellipse cx="744" cy="292" rx="82" ry="25" fill="#fff" stroke="#a87b1f" stroke-width="1.3"/>
+<text x="744.0" y="290.0" font-size="12.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Analysis &amp; synthesis</text>
+<text x="744.0" y="305.0" font-size="10.2" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >valuation models · multiples</text>
+<g class="lk" data-k="L8" tabindex="0"><circle cx="627" cy="238" r="22" fill="#b3261e" stroke="#fff" stroke-width="3" filter="url(#sh)"/>
+<text x="627.0" y="244.0" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >L8</text>
+</g>
+<path d="M927,236 L990,236" stroke="#1f3a5f" stroke-width="2" marker-end="url(#m-n)"/>
+<text x="958.0" y="228.0" font-size="10" fill="#1f3a5f" text-anchor="middle" font-weight="normal" font-style="normal" >feed fwd</text>
+<rect x="992" y="204" width="160" height="66" rx="33" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<text x="1072.0" y="232.0" font-size="15" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Decision</text>
+<text x="1072.0" y="252.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >(hypothesis: “demand is real”)</text>
+<path d="M1152,236 L1200,236" stroke="#1f3a5f" stroke-width="2" marker-end="url(#m-n)"/>
+<rect x="1202" y="204" width="168" height="66" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<text x="1286.0" y="232.0" font-size="15" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Action</text>
+<text x="1286.0" y="252.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >(test = capex, $600–760bn)</text>
+<path d="M760,128 C900,126 1180,134 1270,200" fill="none" stroke="#a87b1f" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#m-g)"/>
+<path d="M500,126 C380,126 270,150 246,198" fill="none" stroke="#a87b1f" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#m-g)"/>
+<text x="1072.0" y="180.0" font-size="11.5" fill="#a87b1f" text-anchor="middle" font-weight="bold" font-style="normal" >implicit guidance &amp; control</text>
+<text x="1072.0" y="195.0" font-size="10.5" fill="#a87b1f" text-anchor="middle" font-weight="normal" font-style="italic" >expectation → action, bypassing test (reflexivity)</text>
+<text x="268.0" y="128.0" font-size="11" fill="#a87b1f" text-anchor="start" font-weight="bold" font-style="normal" >implicit guidance &amp; control</text>
+<path class="drip" d="M627,262 C627,350 900,352 998,334" fill="none" stroke="#b3261e" stroke-width="3.5" stroke-dasharray="7 5" marker-end="url(#m-r)"/>
+<path d="M1286,270 L1286,384 L236,384 L236,272" fill="none" stroke="#1f3a5f" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#m-n)"/>
+<text x="640.0" y="402.0" font-size="12" fill="#1f3a5f" text-anchor="middle" font-weight="bold" font-style="normal" letter-spacing=".5">FEEDBACK — but much of what returns is the loop's own spending, re-observed as “demand” (L1 → L8)</text>
+<g class="lk" data-k="L8" tabindex="0"><rect x="1000" y="286" width="370" height="92" rx="5" fill="#fbe3df" stroke="#b3261e" stroke-width="1.6" filter="url(#sh)"/>
+<rect x="1000" y="286" width="6" height="92" fill="#b3261e"/>
+<text x="1016.0" y="306.0" font-size="13" fill="#b3261e" text-anchor="start" font-weight="bold" font-style="normal" >L8 · Orientation leak</text>
+<text x="1016.0" y="332.0" font-size="21" fill="#1d1a16" text-anchor="start" font-weight="bold" font-style="normal" >schema ≠ reality</text>
+<text x="1016.0" y="352.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >valuation models mistake the loop's echo for outside signal</text>
+<text x="1252.0" y="369.0" font-size="9.5" fill="#7d7364" text-anchor="end" font-weight="normal" font-style="italic" >severity</text>
+<rect x="1258" y="360" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1279" y="360" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1300" y="360" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1321" y="360" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1342" y="360" width="17" height="10" fill="#fff" stroke="#b3261e" stroke-width="1"/>
+</g>
+<g class="lk" data-k="L4" tabindex="0"><rect x="1066" y="440" width="314" height="118" rx="5" fill="#fbe3df" stroke="#b3261e" stroke-width="1.6" filter="url(#sh)"/>
+<rect x="1066" y="440" width="6" height="118" fill="#b3261e"/>
+<text x="1082.0" y="460.0" font-size="13" fill="#b3261e" text-anchor="start" font-weight="bold" font-style="normal" >L4 · Debt service &amp; credit</text>
+<text x="1082.0" y="486.0" font-size="21" fill="#1d1a16" text-anchor="start" font-weight="bold" font-style="normal" >≈$570bn</text>
+<text x="1082.0" y="506.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >AI-linked issuance 2026 (≈2× y/y);</text>
+<text x="1082.0" y="521.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >≈ half of US IG bond issuance</text>
+<text x="1262.0" y="549.0" font-size="9.5" fill="#7d7364" text-anchor="end" font-weight="normal" font-style="italic" >severity</text>
+<rect x="1268" y="540" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1289" y="540" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1310" y="540" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1331" y="540" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1352" y="540" width="17" height="10" fill="#fff" stroke="#b3261e" stroke-width="1"/>
+</g>
+<g class="lk" data-k="L6" tabindex="0"><rect x="1066" y="602" width="314" height="118" rx="5" fill="#fbe3df" stroke="#b3261e" stroke-width="1.6" filter="url(#sh)"/>
+<rect x="1066" y="602" width="6" height="118" fill="#b3261e"/>
+<text x="1082.0" y="622.0" font-size="13" fill="#b3261e" text-anchor="start" font-weight="bold" font-style="normal" >L6 · Special-purchaser premium</text>
+<text x="1082.0" y="648.0" font-size="21" fill="#1d1a16" text-anchor="start" font-weight="bold" font-style="normal" >worth ≠ market value</text>
+<text x="1082.0" y="668.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >capex priced at strategic worth;</text>
+<text x="1082.0" y="683.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >impairment on resale (Meta sells compute)</text>
+<text x="1262.0" y="711.0" font-size="9.5" fill="#7d7364" text-anchor="end" font-weight="normal" font-style="italic" >severity</text>
+<rect x="1268" y="702" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1289" y="702" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1310" y="702" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="1331" y="702" width="17" height="10" fill="#fff" stroke="#b3261e" stroke-width="1"/>
+<rect x="1352" y="702" width="17" height="10" fill="#fff" stroke="#b3261e" stroke-width="1"/>
+</g>
+<g class="lk" data-k="L7" tabindex="0"><rect x="1066" y="1078" width="314" height="118" rx="5" fill="#fbf0d6" stroke="#a87b1f" stroke-width="1.6" filter="url(#sh)"/>
+<rect x="1066" y="1078" width="6" height="118" fill="#a87b1f"/>
+<text x="1082.0" y="1098.0" font-size="13" fill="#a87b1f" text-anchor="start" font-weight="bold" font-style="normal" >L7 · Jevons migration</text>
+<text x="1082.0" y="1124.0" font-size="21" fill="#1d1a16" text-anchor="start" font-weight="bold" font-style="normal" >→ power · grid · land</text>
+<text x="1082.0" y="1144.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >cheaper tokens → more compute →</text>
+<text x="1082.0" y="1159.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >rents accrue to the scarce input</text>
+<text x="1262.0" y="1187.0" font-size="9.5" fill="#7d7364" text-anchor="end" font-weight="normal" font-style="italic" >redirect</text>
+<rect x="1268" y="1178" width="17" height="10" fill="#a87b1f" stroke="#a87b1f" stroke-width="1"/>
+<rect x="1289" y="1178" width="17" height="10" fill="#a87b1f" stroke="#a87b1f" stroke-width="1"/>
+<rect x="1310" y="1178" width="17" height="10" fill="#a87b1f" stroke="#a87b1f" stroke-width="1"/>
+<rect x="1331" y="1178" width="17" height="10" fill="#a87b1f" stroke="#a87b1f" stroke-width="1"/>
+<rect x="1352" y="1178" width="17" height="10" fill="#a87b1f" stroke="#a87b1f" stroke-width="1"/>
+</g>
+<g class="lk" data-k="L5" tabindex="0"><rect x="20" y="602" width="314" height="118" rx="5" fill="#e2efe9" stroke="#2f6b57" stroke-width="1.6" filter="url(#sh)"/>
+<rect x="20" y="602" width="6" height="118" fill="#2f6b57"/>
+<text x="36.0" y="622.0" font-size="13" fill="#2f6b57" text-anchor="start" font-weight="bold" font-style="normal" >L5 · Consumer surplus</text>
+<text x="36.0" y="648.0" font-size="21" fill="#1d1a16" text-anchor="start" font-weight="bold" font-style="normal" >created, not captured</text>
+<text x="36.0" y="668.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >users keep the gains of cheap</text>
+<text x="36.0" y="683.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >intelligence (the fibre precedent)</text>
+<text x="216.0" y="711.0" font-size="9.5" fill="#7d7364" text-anchor="end" font-weight="normal" font-style="italic" >benefit</text>
+<rect x="222" y="702" width="17" height="10" fill="#2f6b57" stroke="#2f6b57" stroke-width="1"/>
+<rect x="243" y="702" width="17" height="10" fill="#2f6b57" stroke="#2f6b57" stroke-width="1"/>
+<rect x="264" y="702" width="17" height="10" fill="#2f6b57" stroke="#2f6b57" stroke-width="1"/>
+<rect x="285" y="702" width="17" height="10" fill="#2f6b57" stroke="#2f6b57" stroke-width="1"/>
+<rect x="306" y="702" width="17" height="10" fill="#2f6b57" stroke="#2f6b57" stroke-width="1"/>
+</g>
+<g class="lk" data-k="L1" tabindex="0"><rect x="20" y="852" width="314" height="118" rx="5" fill="#fbe3df" stroke="#b3261e" stroke-width="1.6" filter="url(#sh)"/>
+<rect x="20" y="852" width="6" height="118" fill="#b3261e"/>
+<text x="36.0" y="872.0" font-size="13" fill="#b3261e" text-anchor="start" font-weight="bold" font-style="normal" >L1 · Phantom demand</text>
+<text x="36.0" y="898.0" font-size="21" fill="#1d1a16" text-anchor="start" font-weight="bold" font-style="normal" >capex +80% · rev +15.5%</text>
+<text x="36.0" y="918.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >one firm's capex booked as another's</text>
+<text x="36.0" y="933.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >revenue, re-observed as “demand”</text>
+<text x="216.0" y="961.0" font-size="9.5" fill="#7d7364" text-anchor="end" font-weight="normal" font-style="italic" >severity</text>
+<rect x="222" y="952" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="243" y="952" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="264" y="952" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="285" y="952" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="306" y="952" width="17" height="10" fill="#fff" stroke="#b3261e" stroke-width="1"/>
+</g>
+<g class="lk" data-k="L3" tabindex="0"><rect x="20" y="1078" width="314" height="118" rx="5" fill="#fbe3df" stroke="#b3261e" stroke-width="1.6" filter="url(#sh)"/>
+<rect x="20" y="1078" width="6" height="118" fill="#b3261e"/>
+<text x="36.0" y="1098.0" font-size="13" fill="#b3261e" text-anchor="start" font-weight="bold" font-style="normal" >L3 · Depreciation &amp; obsolescence</text>
+<text x="36.0" y="1124.0" font-size="21" fill="#1d1a16" text-anchor="start" font-weight="bold" font-style="normal" >≈$115–140bn / yr</text>
+<text x="36.0" y="1144.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >at 5-year lives — each efficiency gain</text>
+<text x="36.0" y="1159.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >shortens the economic life of the last</text>
+<text x="216.0" y="1187.0" font-size="9.5" fill="#7d7364" text-anchor="end" font-weight="normal" font-style="italic" >severity</text>
+<rect x="222" y="1178" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="243" y="1178" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="264" y="1178" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="285" y="1178" width="17" height="10" fill="#b3261e" stroke="#b3261e" stroke-width="1"/>
+<rect x="306" y="1178" width="17" height="10" fill="#fff" stroke="#b3261e" stroke-width="1"/>
+</g>
+<g class="lk" data-k="L2" tabindex="0"><rect x="1066" y="800" width="314" height="236" rx="5" fill="url(#g-china)" filter="url(#sh)"/>
+<rect x="1066" y="800" width="314" height="236" rx="5" fill="url(#hatch)"/>
+<rect x="1318" y="812" width="48" height="48" fill="none" stroke="#f6f1e6" stroke-width="2.5"/>
+<text x="1342.0" y="848.0" font-size="30" fill="#f6f1e6" text-anchor="middle" font-weight="normal" font-style="normal" >勢</text>
+<text x="1082.0" y="822.0" font-size="13" fill="#f6f1e6" text-anchor="start" font-weight="bold" font-style="normal" >L2 · Model-layer margin →</text>
+<text x="1082.0" y="840.0" font-size="12" fill="#f1cf7e" text-anchor="start" font-weight="bold" font-style="normal" letter-spacing=".3">CHINESE OPEN-WEIGHT FRONT</text>
+<text x="1082.0" y="876.0" font-size="23" fill="#fff" text-anchor="start" font-weight="bold" font-style="normal" >60–90% cheaper</text>
+<text x="1082.0" y="902.0" font-size="11.5" fill="#fbe9e6" text-anchor="start" font-weight="normal" font-style="normal" >• ≈61% of OpenRouter tokens (mid-2026)</text>
+<text x="1082.0" y="919.0" font-size="11.5" fill="#fbe9e6" text-anchor="start" font-weight="normal" font-style="normal" >• Vercel: 29% of tokens on &lt;4% of spend</text>
+<text x="1082.0" y="936.0" font-size="11.5" fill="#fbe9e6" text-anchor="start" font-weight="normal" font-style="normal" >• the DeepSeek “death zone”</text>
+<text x="1082.0" y="953.0" font-size="11.5" fill="#fbe9e6" text-anchor="start" font-weight="normal" font-style="normal" >• 4 frontier-class releases in 7 weeks</text>
+<text x="1082.0" y="970.0" font-size="11.5" fill="#fbe9e6" text-anchor="start" font-weight="normal" font-style="normal" >• MIT / Apache 2.0 weights · ~7–8 mo lag</text>
+<text x="1262.0" y="1025.0" font-size="9.5" fill="#f1cf7e" text-anchor="end" font-weight="normal" font-style="italic" >severity</text>
+<rect x="1268" y="1016" width="17" height="10" fill="#f1cf7e" stroke="#f1cf7e"/>
+<rect x="1289" y="1016" width="17" height="10" fill="#f1cf7e" stroke="#f1cf7e"/>
+<rect x="1310" y="1016" width="17" height="10" fill="#f1cf7e" stroke="#f1cf7e"/>
+<rect x="1331" y="1016" width="17" height="10" fill="#f1cf7e" stroke="#f1cf7e"/>
+<rect x="1352" y="1016" width="17" height="10" fill="#f1cf7e" stroke="#f1cf7e"/>
+</g>
+<circle cx="700" cy="800" r="250" fill="none" stroke="#e9dfc9" stroke-width="44"/>
+<circle cx="700" cy="800" r="250" fill="none" stroke="#d8c9a8" stroke-width="44" stroke-dasharray="2 10" opacity=".55"/>
+<circle class="flow" cx="700" cy="800" r="250" fill="none" stroke="#1f3a5f" stroke-width="3" stroke-dasharray="14 22" opacity=".55"/>
+<circle cx="700" cy="800" r="168" fill="url(#g-hub)" stroke="#cbbd9f"/>
+<text x="700.0" y="730.0" font-size="27" fill="#1f3a5f" text-anchor="middle" font-weight="normal" font-style="normal" >The AI</text>
+<text x="700.0" y="762.0" font-size="27" fill="#1f3a5f" text-anchor="middle" font-weight="normal" font-style="normal" >Investment Cycle</text>
+<text x="700.0" y="786.0" font-size="11.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >circulating value · ≈$600–760bn capex (2026)</text>
+<path d="M622.0,878.0 A78,78 0 0 1 778.0,878.0" fill="none" stroke="#e3d8c2" stroke-width="16"/>
+<path d="M622.0,878.0 A78,78 0 0 1 636.9,832.2" fill="none" stroke="#9ec4b2" stroke-width="16"/>
+<path d="M622.0,878.0 A78,78 0 0 1 626.6,851.6" fill="none" stroke="#2f6b57" stroke-width="16"/>
+<line x1="700" y1="878" x2="630.5" y2="842.6" stroke="#b3261e" stroke-width="3"/><circle cx="700" cy="878" r="6" fill="#b3261e"/>
+<text x="700.0" y="902.0" font-size="11.5" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >external AI revenue ÷ capex</text>
+<text x="700.0" y="918.0" font-size="11" fill="#b3261e" text-anchor="middle" font-weight="bold" font-style="normal" >≈ 0.1 – 0.2  ($80–150bn vs $600–760bn)</text>
+<text x="618.0" y="892.0" font-size="10" fill="#7d7364" text-anchor="end" font-weight="normal" font-style="normal" >0</text>
+<text x="782.0" y="892.0" font-size="10" fill="#7d7364" text-anchor="start" font-weight="normal" font-style="normal" >1.0</text>
+<path d="M773.1,560.9 A250,250 0 0 1 870.5,617.2" fill="none" stroke="#1f3a5f" stroke-width="3.2" marker-end="url(#m-n)"/>
+<path d="M943.6,743.8 A250,250 0 0 1 943.6,856.2" fill="none" stroke="#1f3a5f" stroke-width="3.2" marker-end="url(#m-n)"/>
+<path d="M870.5,982.8 A250,250 0 0 1 773.1,1039.1" fill="none" stroke="#1f3a5f" stroke-width="3.2" marker-end="url(#m-n)"/>
+<path d="M626.9,1039.1 A250,250 0 0 1 529.5,982.8" fill="none" stroke="#1f3a5f" stroke-width="3.2" marker-end="url(#m-n)"/>
+<path d="M456.4,856.2 A250,250 0 0 1 456.4,743.8" fill="none" stroke="#1f3a5f" stroke-width="3.2" marker-end="url(#m-n)"/>
+<path d="M529.5,617.2 A250,250 0 0 1 626.9,560.9" fill="none" stroke="#1f3a5f" stroke-width="3.2" marker-end="url(#m-n)"/>
+<rect x="588.0" y="508.0" width="224" height="84" rx="4" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<rect x="588.0" y="508.0" width="224" height="6" fill="#1f3a5f"/>
+<text x="700.0" y="534.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Investors &amp;</text>
+<text x="700.0" y="551.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Capital Markets</text>
+<text x="700.0" y="567.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >equity · debt · private credit</text>
+<rect x="654.8" y="584.0" width="90.4" height="17" rx="8.5" fill="#1f3a5f"/>
+<text x="700.0" y="596.5" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >credit cycle</text>
+<rect x="804.5" y="633.0" width="224" height="84" rx="4" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<rect x="804.5" y="633.0" width="224" height="6" fill="#2f6b57"/>
+<text x="916.5" y="659.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Hyperscalers /</text>
+<text x="916.5" y="676.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Big Tech</text>
+<text x="916.5" y="692.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >capex ≈ $600–760bn (2026)</text>
+<rect x="855.8" y="709.0" width="121.4" height="17" rx="8.5" fill="#2f6b57"/>
+<text x="916.5" y="721.5" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >cresting · hedged</text>
+<rect x="804.5" y="883.0" width="224" height="84" rx="4" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<rect x="804.5" y="883.0" width="224" height="6" fill="#b3261e"/>
+<text x="916.5" y="909.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >AI Developers</text>
+<text x="916.5" y="926.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >&amp; Platforms</text>
+<text x="916.5" y="942.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >frontier model labs</text>
+<rect x="855.8" y="959.0" width="121.4" height="17" rx="8.5" fill="#b3261e"/>
+<text x="916.5" y="971.5" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >sliding to trough</text>
+<rect x="588.0" y="1008.0" width="224" height="84" rx="4" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<rect x="588.0" y="1008.0" width="224" height="6" fill="#a87b1f"/>
+<text x="700.0" y="1034.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Chipmakers &amp;</text>
+<text x="700.0" y="1051.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Data Centres</text>
+<text x="700.0" y="1067.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >GPUs · networking · power</text>
+<rect x="654.8" y="1084.0" width="90.4" height="17" rx="8.5" fill="#a87b1f"/>
+<text x="700.0" y="1096.5" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >held at peak</text>
+<rect x="371.5" y="883.0" width="224" height="84" rx="4" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<rect x="371.5" y="883.0" width="224" height="6" fill="#1f3a5f"/>
+<text x="483.5" y="909.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Revenues, Growth</text>
+<text x="483.5" y="926.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Expectations</text>
+<text x="483.5" y="942.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >forecasts · valuations</text>
+<rect x="413.5" y="959.0" width="140.0" height="17" rx="8.5" fill="#1f3a5f"/>
+<text x="483.5" y="971.5" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >peak of expectations</text>
+<rect x="371.5" y="633.0" width="224" height="84" rx="4" fill="#fff" stroke="#1f3a5f" stroke-width="2" filter="url(#sh)"/>
+<rect x="371.5" y="633.0" width="224" height="6" fill="#2f6b57"/>
+<text x="483.5" y="659.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >Customer Demand</text>
+<text x="483.5" y="676.0" font-size="14" fill="#1d1a16" text-anchor="middle" font-weight="bold" font-style="normal" >&amp; Commitments</text>
+<text x="483.5" y="692.0" font-size="10.5" fill="#4a4339" text-anchor="middle" font-weight="normal" font-style="italic" >AI revenue ≈ $80–150bn</text>
+<rect x="432.1" y="709.0" width="102.8" height="17" rx="8.5" fill="#2f6b57"/>
+<text x="483.5" y="721.5" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >trough → slope</text>
+<rect x="20" y="452" width="314" height="96" rx="5" fill="#fff" stroke="#2f6b57" stroke-width="1.6" stroke-dasharray="5 3" filter="url(#sh)"/>
+<text x="36.0" y="474.0" font-size="12.5" fill="#2f6b57" text-anchor="start" font-weight="bold" font-style="normal" >OUTSIDE THE LOOP · end customers</text>
+<text x="36.0" y="496.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >the only demand not funded by the loop</text>
+<text x="36.0" y="512.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >itself — a thin inflow against a thick</text>
+<text x="36.0" y="528.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >circulation (compare the line widths)</text>
+<path d="M334,520 C380,540 400,580 453,631" fill="none" stroke="#2f6b57" stroke-width="3" marker-end="url(#m-j)"/>
+<text x="392.0" y="560.0" font-size="11" fill="#2f6b57" text-anchor="start" font-weight="bold" font-style="italic" >real inflow</text>
+<path d="M830.0,540.0 C948.0,540.0 948.0,500 1056,500" fill="none" stroke="#b3261e" stroke-width="7" stroke-linecap="round" opacity=".28"/>
+<path class="drip" d="M830.0,540.0 C948.0,540.0 948.0,500 1056,500" fill="none" stroke="#b3261e" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#m-r)"/>
+<g class="lk" data-k="L4" tabindex="0"><circle cx="830.0" cy="540.0" r="17" fill="#b3261e" stroke="#fff" stroke-width="3" filter="url(#sh)"/>
+<text x="830.0" y="545.0" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >L4</text>
+</g>
+<path d="M1046.5,675.0 C1056.3,675.0 1056.3,661 1056,661" fill="none" stroke="#b3261e" stroke-width="5" stroke-linecap="round" opacity=".28"/>
+<path class="drip" d="M1046.5,675.0 C1056.3,675.0 1056.3,661 1056,661" fill="none" stroke="#b3261e" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#m-r)"/>
+<g class="lk" data-k="L6" tabindex="0"><circle cx="1046.5" cy="675.0" r="17" fill="#b3261e" stroke="#fff" stroke-width="3" filter="url(#sh)"/>
+<text x="1046.5" y="680.0" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >L6</text>
+</g>
+<path d="M1046.5,925.0 C1056.3,925.0 1056.3,918 1056,918" fill="none" stroke="#b3261e" stroke-width="11" stroke-linecap="round" opacity=".28"/>
+<path class="drip" d="M1046.5,925.0 C1056.3,925.0 1056.3,918 1056,918" fill="none" stroke="#b3261e" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#m-r)"/>
+<g class="lk" data-k="L2" tabindex="0"><circle cx="1046.5" cy="925.0" r="17" fill="#b3261e" stroke="#fff" stroke-width="3" filter="url(#sh)"/>
+<text x="1046.5" y="930.0" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >L2</text>
+</g>
+<path d="M830.0,1058.0 C948.0,1058.0 948.0,1137 1056,1137" fill="none" stroke="#a87b1f" stroke-width="8" stroke-linecap="round" opacity=".28"/>
+<path class="drip" d="M830.0,1058.0 C948.0,1058.0 948.0,1137 1056,1137" fill="none" stroke="#a87b1f" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#m-g)"/>
+<g class="lk" data-k="L7" tabindex="0"><circle cx="830.0" cy="1058.0" r="17" fill="#a87b1f" stroke="#fff" stroke-width="3" filter="url(#sh)"/>
+<text x="830.0" y="1063.0" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >L7</text>
+</g>
+<path d="M570.0,1058.0 C452.0,1058.0 452.0,1137 344,1137" fill="none" stroke="#b3261e" stroke-width="7" stroke-linecap="round" opacity=".28"/>
+<path class="drip" d="M570.0,1058.0 C452.0,1058.0 452.0,1137 344,1137" fill="none" stroke="#b3261e" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#m-r)"/>
+<g class="lk" data-k="L3" tabindex="0"><circle cx="570.0" cy="1058.0" r="17" fill="#b3261e" stroke="#fff" stroke-width="3" filter="url(#sh)"/>
+<text x="570.0" y="1063.0" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >L3</text>
+</g>
+<path d="M353.5,925.0 C343.7,925.0 343.7,911 344,911" fill="none" stroke="#b3261e" stroke-width="7" stroke-linecap="round" opacity=".28"/>
+<path class="drip" d="M353.5,925.0 C343.7,925.0 343.7,911 344,911" fill="none" stroke="#b3261e" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#m-r)"/>
+<g class="lk" data-k="L1" tabindex="0"><circle cx="353.5" cy="925.0" r="17" fill="#b3261e" stroke="#fff" stroke-width="3" filter="url(#sh)"/>
+<text x="353.5" y="930.0" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >L1</text>
+</g>
+<path d="M353.5,675.0 C343.7,675.0 343.7,661 344,661" fill="none" stroke="#2f6b57" stroke-width="6" stroke-linecap="round" opacity=".28"/>
+<path class="drip" d="M353.5,675.0 C343.7,675.0 343.7,661 344,661" fill="none" stroke="#2f6b57" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#m-j)"/>
+<g class="lk" data-k="L5" tabindex="0"><circle cx="353.5" cy="675.0" r="17" fill="#2f6b57" stroke="#fff" stroke-width="3" filter="url(#sh)"/>
+<text x="353.5" y="680.0" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="bold" font-style="normal" >L5</text>
+</g>
+<path d="M1060,883 L1077,894" stroke="#b3261e" stroke-width="4" opacity=".6" marker-end="url(#m-r)"/>
+<path d="M1060,953 L1077,956" stroke="#b3261e" stroke-width="4" opacity=".6" marker-end="url(#m-r)"/>
+<text x="1050.0" y="862.0" font-size="11" fill="#b3261e" text-anchor="end" font-weight="bold" font-style="italic" >price pressure ◀</text>
+<path d="M1110,800 C1110,760 1060,730 977,725" fill="none" stroke="#a87b1f" stroke-width="2.6" stroke-dasharray="3 4" marker-end="url(#m-g)"/>
+<text x="1118.0" y="768.0" font-size="10.5" fill="#a87b1f" text-anchor="start" font-weight="bold" font-style="normal" >hosted on AWS / Azure</text>
+<text x="1118.0" y="782.0" font-size="10.5" fill="#a87b1f" text-anchor="start" font-weight="normal" font-style="italic" >→ volume to hyperscalers</text>
+<path d="M897,979 C907,1010 830,1015 816,1042" fill="none" stroke="#a87b1f" stroke-width="4" marker-end="url(#m-g)"/>
+<text x="925.0" y="994.0" font-size="10.5" fill="#a87b1f" text-anchor="start" font-weight="bold" font-style="normal" >JEVONS: cheaper tokens</text>
+<text x="925.0" y="1008.0" font-size="10.5" fill="#a87b1f" text-anchor="start" font-weight="normal" font-style="italic" >→ more compute (if |η| &gt; 1)</text>
+<path d="M1286,384 L1286,412 L1040,412 L1040,588 Q1040,606 957,629" fill="none" stroke="#1f3a5f" stroke-width="1.6" stroke-dasharray="3 4" marker-end="url(#m-n)"/>
+<text x="1050.0" y="404.0" font-size="10.5" fill="#1f3a5f" text-anchor="start" font-weight="normal" font-style="italic" >action = capex orders</text>
+<path d="M700,508 L700,420 L236,420 L236,388" fill="none" stroke="#1f3a5f" stroke-width="1.6" stroke-dasharray="3 4" marker-end="url(#m-n)"/>
+<text x="470.0" y="438.0" font-size="10.5" fill="#1f3a5f" text-anchor="middle" font-weight="normal" font-style="italic" >market prices observed as “information”</text>
+<text x="700.0" y="1226.0" font-size="16" fill="#1d1a16" text-anchor="middle" font-weight="normal" font-style="italic" >Are we observing genuine demand, or the consequences of investing in its expectation?</text>
+<rect x="20" y="1250" width="1360" height="76" fill="#f6f1e6" stroke="#cbbd9f"/>
+<line x1="40" y1="1272" x2="74" y2="1272" stroke="#b3261e" stroke-width="3" stroke-dasharray="7 5"/>
+<text x="84.0" y="1276.0" font-size="11.5" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >leak — value lost / reassigned</text>
+<line x1="375" y1="1272" x2="409" y2="1272" stroke="#a87b1f" stroke-width="3" stroke-dasharray="7 5"/>
+<text x="419.0" y="1276.0" font-size="11.5" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >redirect — Jevons flow to scarce inputs</text>
+<line x1="710" y1="1272" x2="744" y2="1272" stroke="#2f6b57" stroke-width="3" stroke-dasharray="7 5"/>
+<text x="754.0" y="1276.0" font-size="11.5" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >benefit — value created, not captured</text>
+<line x1="1045" y1="1272" x2="1079" y2="1272" stroke="#1f3a5f" stroke-width="3" stroke-dasharray="7 5"/>
+<text x="1089.0" y="1276.0" font-size="11.5" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >circulation inside the loop</text>
+<text x="40.0" y="1302.0" font-size="11.5" fill="#1d1a16" text-anchor="start" font-weight="bold" font-style="normal" >Node stripe &amp; pill = Hartman value dimension and Hype-Cycle position:</text>
+<rect x="470" y="1292" width="26" height="12" fill="#1f3a5f"/>
+<text x="504.0" y="1302.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >systemic (narrative)</text>
+<rect x="670" y="1292" width="26" height="12" fill="#b3261e"/>
+<text x="704.0" y="1302.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >extrinsic (substitutable)</text>
+<rect x="870" y="1292" width="26" height="12" fill="#a87b1f"/>
+<text x="904.0" y="1302.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >extrinsic (volume)</text>
+<rect x="1070" y="1292" width="26" height="12" fill="#2f6b57"/>
+<text x="1104.0" y="1302.0" font-size="11.2" fill="#1d1a16" text-anchor="start" font-weight="normal" font-style="normal" >intrinsic / hedged</text>
+<text x="40.0" y="1320.0" font-size="10.5" fill="#7d7364" text-anchor="start" font-weight="normal" font-style="italic" >Meters show judged severity (5 = highest). Thick pale bands under each leak indicate relative scale. Click or tab to any leak for detail.</text>
 </svg>
-<figcaption><b>Figure 4.</b> The original sketch redrawn: Boyd's final OODA diagram (1995) laid over the AI investment cycle, with eight points where value leaves the loop. Red marks value that is lost or reassigned. Gold (L7) marks value that moves to physical inputs. Green (L5) marks value created for users but not captured by investors. Figures come from the sources in §11 and are cited in the text.</figcaption>
+<div id="leakpanel" class="leakpanel" aria-live="polite"><b>Explore the leaks.</b> Click, tap or tab to any numbered seal or box in the diagram to see what leaks there, where it goes and the evidence behind it.</div>
+<figcaption><b>Figure 4.</b> The original sketch redrawn and enlarged: Boyd's final OODA diagram (1995) laid over the AI investment cycle. Eight seals mark where value leaves the loop. Red is value lost or reassigned, gold is value redirected to physical inputs by the Jevons rebound, and green is value created for users but not captured by investors. Also shown: Boyd's interconnected Orientation elements with "new information" flagged as partly self-generated, both implicit-guidance shortcuts, the thin inflow of external demand against the thick internal circulation, a gauge of external revenue to capex, the Chinese open-weight pressure front, and each node's Hartman value dimension and Hype-Cycle position. Severity meters and positions are interpretive. Figures come from the sources in §11.</figcaption>
+<script>
+(function(){var D={"L1": ["Phantom demand (circularity)", "One firm's capex is booked as another's revenue, becomes a forecast, and justifies more capex. Futuriom finds 2026 capex growing about 80% against revenue growth of about 15.5% for the four largest hyperscalers. Nothing is destroyed on paper; the observation every later decision depends on is inflated."], "L2": ["Model-layer margin \u2192 Chinese open-weight front", "The frontier labs take the full axiological hit: the most systemic valuations, the most substitutable revenue. Chinese open models are 60\u201390% cheaper for comparable work, carried about 61% of OpenRouter tokens by mid-2026, and took 29% of Vercel's gateway tokens on under 4% of spend. Artificial Analysis calls the resulting band of prices a DeepSeek \u201cdeath zone\u201d. Note the gold arrow: the same open weights are hosted on AWS and Azure, sending volume back to the hyperscalers."], "L3": ["Depreciation & obsolescence", "Dubach estimates the 2026 capex programme alone carries roughly $115\u2013140bn a year in depreciation at five-year lives. Every efficiency gain, including those Chinese labs publish openly, shortens the economic life of the previous chip generation, pulling accounting life and economic life apart."], "L4": ["Debt service & credit", "Morgan Stanley estimates AI-linked debt issuance near $570bn in 2026, about double the prior year, and AI financing reportedly makes up about half of US investment-grade issuance. Equity can absorb a bad year; coupons cannot be deferred. Here the Hype Cycle becomes the credit cycle (\u00a77)."], "L5": ["Consumer surplus", "Value created but not captured. If intelligence becomes cheap, most of its value goes to users, as cheap bandwidth after 2001 enriched the internet's users rather than the fibre's financiers. Good for society; invisible in the loop's revenue line."], "L6": ["Special-purchaser premium", "Hyperscaler capex is priced at strategic worth (investment value) under the compulsion of not being left out, not at Red Book market value. On resale the premium becomes impairment; Meta's sale of excess compute, and the fall in CoreWeave and Nebius that followed, showed the price without the special purchaser."], "L7": ["Jevons migration", "If demand for intelligence is elastic (|\u03b7| > 1), cheaper tokens raise total compute use. The rebound does not reward the seller of the efficiency; it flows to the scarce physical input: power, grid connection, cooling and land. A redirect rather than a loss (\u00a76.5)."], "L8": ["Orientation leak", "The leak beneath the others: a valuation schema that cannot tell the loop's echo from an outside signal. The 'new information' entering Orientation is partly the loop's own spending; implicit guidance and control then runs from expectation straight to action, skipping the test. Boyd: the loop orienting on its own reflection."]};var p=document.getElementById('leakpanel');
+var g=document.querySelectorAll('#fig4svg .lk');
+function show(k,el){var d=D[k];if(!d)return;p.innerHTML='<b>'+k+' · '+d[0]+'.</b> '+d[1];
+g.forEach(function(x){x.classList.toggle('on',x.getAttribute('data-k')===k)});}
+g.forEach(function(el){var k=el.getAttribute('data-k');el.addEventListener('click',function(){show(k)});
+el.addEventListener('mouseenter',function(){show(k)});el.addEventListener('focus',function(){show(k)});
+el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(k)}});});})();
+</script>
 </figure>
 
 <h3>5.1 The eight leaks, node by node</h3>
